@@ -1,0 +1,44 @@
+#include "fillit.h"
+
+void	exclude_letter_occurences_except_row(\
+	t_node **m_lst, char letter, int row)
+{
+	int		i;
+
+	i = 0;
+	while (m_lst[i])
+	{
+		if (m_lst[i]->role == 'b')
+		{
+			if (m_lst[i]->c > letter)
+				break ;
+			else if (m_lst[i]->c < letter)
+				continue ;
+			else if (m_lst[i]->c == letter && m_lst[i]->x != row)
+				delete_node(m_lst[i]);
+		}
+		i += 1;
+	}
+}
+
+/* t_node	*exclude_letter_occurences_except_row(\ */
+/* 	t_node **m_lst, char letter, int row) */
+/* { */
+/* 	t_node	*last_excl; */
+/* 	t_node	*cur; */
+
+/* 	last_excl = NULL; */
+/* 	cur = m_lst[1]; */
+/* 	while (cur->role != 'z') */
+/* 	{ */
+/* 		cur = cur->d; */
+/* 		if (cur->role == 'h') */
+/* 		{ */
+/* 			cur = cur->r; */
+/* 			continue ; */
+/* 		} */
+/* 		else if ((cur->x != row) && (cur->c == letter)) */
+/* 		    last_excl = cover_option(m_lst, cur->x); */
+/* 	} */
+/* 	return (last_excl); */
+/* } */
