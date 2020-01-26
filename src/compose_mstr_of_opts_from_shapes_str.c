@@ -11,7 +11,6 @@ char	**compose_mstr_of_opts_from_shapes_str(\
 	m = NULL;
 	while (shapes[i])
 	{
-		printf("compose: shapes = %c%c\n", shapes[i], shapes[i + 1]);
 		if (m == NULL)
 		{
 			m = get_submatrix_for_tetr(\

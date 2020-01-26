@@ -4,7 +4,6 @@ void	uncover_item(t_node **m_lst, int n_item)
 {
 	t_node	*cur;
 
-	/* printf("After uncovering item #%d\n", n_item); */
 	cur = m_lst[0]->s;
 	while (cur->y != n_item)
 		cur = cur->r;
@@ -19,5 +18,4 @@ void	uncover_item(t_node **m_lst, int n_item)
 			cur = cur->s;
 		}
 	}
-	/* print_matrix_lst_conseq(m_lst); */
 }

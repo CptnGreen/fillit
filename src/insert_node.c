@@ -1,10 +1,5 @@
 #include "fillit.h"
 
-/*
-** Применение этой функции на неудалённом узле
-** ничего не меняет!
-*/
-
 void	insert_node(t_node *node)
 {
 	t_node	*tmp;

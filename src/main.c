@@ -28,11 +28,11 @@ int		main(int argc, char **argv)
 	{
 		m_str = compose_mstr_of_opts_from_shapes_str(sq_side, shapes);
 		m_lst = get_mlst_from_mstr(m_str);
-		print_matrix_lst_conseq(m_lst);
+		/* print_matrix_lst_conseq(m_lst); */
 		if (gbo(m_lst))
 		{
-			printf("Best options:\n\n");
-			print_matrix_lst_conseq(m_lst);
+			/* printf("Best options:\n\n"); */
+			/* print_matrix_lst_conseq(m_lst); */
 			update_mlst_status(m_lst, n_of);
 			printf("Min sq_side = %d:\n\n", sq_side); // remove later!
 			m_str = opts_lst_to_square_str(m_lst, sq_side);

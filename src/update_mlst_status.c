@@ -7,13 +7,11 @@ void	update_mlst_status(t_node **m_lst, int *n_of)
 	t_node	*cur;
 	char	letter;
 
-	printf("Current status: ");
 	n_of[OPTS] = n_of[TETR_ALL] = n_of[TETR_PRES] = n_of[CHOS] = 0;
 	c_prev_pres = c_prev_all = 'A' - 1;
 	cur = (m_lst[0]->role == 'z') ? (m_lst[0]->d) : (m_lst[0]);
 	while (cur->c != '$')
 	{
-		/* print_node_info(cur); */
 		if (cur->c == '*')
 		{
 			letter = ft_toupper(cur->r->c);
@@ -33,11 +31,6 @@ void	update_mlst_status(t_node **m_lst, int *n_of)
 			n_of[TETR_ALL] += 1;
 			c_prev_all = ft_toupper(cur->r->c);
 		}
-		/* print_node_info(cur); */
 		cur = cur->d;
 	}
-	printf("n_of[OPTS] = %d, n_of[TETR_ALL] = %d, \
-n_of[TETR_PRES] = %d, n_of[CHOS] = %d\n", \
-		   n_of[OPTS], n_of[TETR_ALL], \
-		   n_of[TETR_PRES], n_of[CHOS]);
 }

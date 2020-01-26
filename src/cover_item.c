@@ -5,7 +5,6 @@ void	cover_item(t_node **m_lst, int n_item)
 	t_node	*cur;
 	t_node	*tmp;
 
-	/* printf("After covering item #%d:\n", n_item); */
 	cur = m_lst[0]->s;
 	while (cur->y != n_item)
 		cur = cur->r;
@@ -25,5 +24,4 @@ void	cover_item(t_node **m_lst, int n_item)
 		delete_node(cur);
 		cur->c = 'h';
 	}
-	/* print_matrix_lst_conseq(m_lst); */
 }

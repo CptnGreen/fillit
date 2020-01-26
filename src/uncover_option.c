@@ -5,7 +5,6 @@ void	uncover_option(t_node **m_lst, int n_opt)
 	int		i;
 	t_node	*cur;
 
-	/* printf("Uncovering option #%d\n", n_opt); */
 	cur = m_lst[0];
 	while (cur->x != n_opt)
 		cur = cur->d;
@@ -20,5 +19,4 @@ void	uncover_option(t_node **m_lst, int n_opt)
 			i -= 1;
 		}
 	}
-	/* print_matrix_lst_conseq(m_lst); */
 }
