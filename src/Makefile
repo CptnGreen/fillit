@@ -35,20 +35,19 @@ SRCS = \
 	get_n_of_opts_in_mlst.c \
 	print_all_nodes_mlst.c \
 	choose_option.c \
-	cover_item_except_one_opt.c \
-	cover_option.c \
+	cover_option_of_node.c \
 	delete_node.c \
 	update_mlst_status.c \
 	get_first_block_num_in_option.c \
 	get_last_block_num_in_option.c \
 	insert_node.c \
 	unchoose_option.c \
-	uncover_item.c \
-	uncover_option.c \
+	uncover_item_of_node.c \
+	uncover_option_of_node.c \
 	gbo.c \
 	get_next_submatrix_ptr.c \
 	skip_to_next_unempty_opt.c \
-	cover_item.c
+	cover_item_of_node.c
 
 OBJS = \
 	get_number_of_options_for_tetrimino.o \
@@ -77,20 +76,19 @@ OBJS = \
 	get_n_of_opts_in_mlst.o \
 	print_all_nodes_mlst.o \
 	choose_option.o \
-	cover_item_except_one_opt.o \
-	cover_option.o \
+	cover_option_of_node.o \
 	delete_node.o \
 	update_mlst_status.o \
 	get_first_block_num_in_option.o \
 	get_last_block_num_in_option.o \
 	insert_node.o \
 	unchoose_option.o \
-	uncover_item.o \
-	uncover_option.o \
+	uncover_item_of_node.o \
+	uncover_option_of_node.o \
 	gbo.o \
 	get_next_submatrix_ptr.o \
 	skip_to_next_unempty_opt.o \
-	cover_item.o
+	cover_item_of_node.o
 
 
 all: $(EXEC)

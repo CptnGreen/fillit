@@ -1,13 +1,11 @@
 #include "fillit.h"
 
-void	uncover_option(t_node **m_lst, int n_opt)
+void	uncover_option_of_node(t_node **m_lst, t_node *node)
 {
 	int		i;
 	t_node	*cur;
 
-	cur = m_lst[0];
-	while (cur->x != n_opt)
-		cur = cur->d;
+	cur = node->l;
 	if (ft_islower(cur->c) || cur->c == '*')
 	{
 		cur->c = ft_toupper(cur->r->c);

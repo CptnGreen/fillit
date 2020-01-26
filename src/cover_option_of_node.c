@@ -1,14 +1,12 @@
 #include "fillit.h"
 
-void	cover_option(t_node **m_lst, int n_opt)
+void	cover_option_of_node(t_node **m_lst, t_node *node)
 {
 	int		i;
 	int		j;
 	t_node	*cur;
 
-	cur = m_lst[0];
-	while (cur->x != n_opt)
-		cur = cur->d;
+	cur = node->l;
 	if (ft_islower(cur->c))
 		return ;
 	cur->c = ft_tolower(cur->c);

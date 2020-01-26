@@ -11,12 +11,16 @@ int		get_min_sq_side(char *shapes);
 int		main(int argc, char **argv)
 {
 	int			fd;
-	char			**m_str;
-	t_node			**m_lst;
-	char			*shapes;
+	char		**m_str;
+	t_node		**m_lst;
+	char		*shapes;
 	int			sq_side;
 	int			n_of[4];
 
+	clock_t		t;
+	double		time_taken;
+
+	t = clock();
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
 		return (FAILURE);
 	shapes = ft_strnew(MAX_N_OF_TETR * 2);
@@ -41,6 +45,9 @@ int		main(int argc, char **argv)
 		}
 		sq_side += 1;
 	}
+	t = clock() - t;
+	time_taken = ((double)t) / CLOCKS_PER_SEC;
+	printf("fillit took %f seconds to execute\n", time_taken);
 	return (FINISH);
 }
 

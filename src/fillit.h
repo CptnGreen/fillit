@@ -15,6 +15,7 @@
 
 # include <math.h> // remove later!
 # include <stdio.h> // remove later!
+# include <time.h> // remove later!
 
 # include "../libft/libft.h"
 
@@ -132,8 +133,8 @@ void					print_all_nodes_mlst(t_node **m_lst);
 
 void	choose_option(t_node **m_lst, int n_opt);
 void	cover_item_except_one_opt(t_node **m_lst, int n_item, int n_opt);
-void	cover_item(t_node **m_lst, int n_item);
-void	cover_option(t_node **m_lst, int n_opt);
+void	cover_item_of_node(t_node **m_lst, t_node *node);
+void	cover_option_of_node(t_node **m_lst, t_node *node);
 void	delete_node(t_node *node);
 int		get_best_opts(t_node **m_lst);
 void	update_mlst_status(t_node **m_lst, int *n_of);
@@ -141,8 +142,8 @@ int		get_first_block_num_in_option(t_node **m_lst, int n_opt);
 int		get_last_block_num_in_option(t_node **m_lst, int n_opt);
 void	insert_node(t_node *node);
 void	unchoose_option(t_node **m_lst, int n_opt);
-void	uncover_item(t_node **m_lst, int n_item);
-void	uncover_option(t_node **m_lst, int n_opt);
+void	uncover_item_of_node(t_node **m_lst, t_node *node);
+void	uncover_option_of_node(t_node **m_lst, t_node *node);
 
 int		gbo(t_node **m_lst);
 t_node	**get_next_submatrix_ptr(t_node **m_lst, int i);

@@ -3,6 +3,7 @@
 void	uncover_item_of_node(t_node **m_lst, t_node *hdr)
 {
 	t_node	*cur;
+	int		n_item;
 
 	cur = hdr;
 	if (cur->c == 'h')

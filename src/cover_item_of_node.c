@@ -1,13 +1,12 @@
 #include "fillit.h"
 
-void	cover_item(t_node **m_lst, int n_item)
+void	cover_item_of_node(t_node **m_lst, t_node *hdr)
 {
 	t_node	*cur;
 	t_node	*tmp;
+	int		n_item;
 
-	cur = m_lst[0]->s;
-	while (cur->y != n_item)
-		cur = cur->r;
+	cur = hdr;
 	if (cur->c == 'H')
 	{
 		cur->s = cur->u;
@@ -17,7 +16,7 @@ void	cover_item(t_node **m_lst, int n_item)
 		{
 			cur->s = tmp;
 			tmp = cur;
-			cover_option(m_lst, cur->x);
+			cover_option_of_node(m_lst, cur);
 			cur = cur->d;
 		}
 		cur->s = tmp;
