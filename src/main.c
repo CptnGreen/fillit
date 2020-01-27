@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 00:17:47 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 02:17:58 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int		main(int argc, char **argv)
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
 		return (FAILURE);
 	shapes = ft_strnew(MAX_N_OF_TETR * 2);
-	check_input_and_get_str_of_shapes(fd, shapes);
+	if (check_input_and_get_str_of_shapes(fd, shapes) == -1)
+		return (ERROR);
 	close(fd);
 	printf("Shapes (n = %d): %s\n\n", (int)(ft_strlen(shapes) / 2), shapes);
 	sq_side = get_min_sq_side(shapes);
@@ -56,7 +57,7 @@ int		main(int argc, char **argv)
 	}
 	t = clock() - t;
 	time_taken = ((double)t) / CLOCKS_PER_SEC;
-	printf("fillit took %f seconds to execute\n", time_taken);
+	printf("\nfillit took %f seconds to execute\n", time_taken);
 	return (FINISH);
 }
 

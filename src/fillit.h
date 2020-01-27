@@ -6,7 +6,7 @@
 /*   By: slisandr <slisandr@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:55:05 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 00:13:15 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 02:14:59 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,15 +118,6 @@ int						get_num_of_tetr_mlst(t_node **m_lst);
 int						get_num_of_tetr_mlst_conseq(t_node **m_lst);
 
 /*
-** Debugging:
-*/
-
-void					print_mstr(char **matrix);
-void					print_mlst(t_node **);
-void					print_node_info(t_node *node);
-void					print_all_nodes_mlst(t_node **m_lst);
-
-/*
 ** Algorythm X:
 */
 
@@ -147,5 +138,7 @@ void	uncover_option_of_node(t_node **m_lst, t_node *node);
 int		gbo(t_node **m_lst);
 t_node	**get_next_submatrix_ptr(t_node **m_lst, int i);
 int		skip_to_next_unempty_opt(t_node **m_lst, int *index);
+
+void	print_mstr(char **matrix);
 
 #endif

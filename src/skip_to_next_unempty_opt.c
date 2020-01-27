@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   skip_to_next_unempty_opt.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/28 02:11:06 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 02:11:11 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		skip_to_next_unempty_opt(t_node **m_lst, int *index)
@@ -19,6 +31,5 @@ int		skip_to_next_unempty_opt(t_node **m_lst, int *index)
 		}
 		cur = cur->d;
 	}
-
 	return (FAILURE);
 }
