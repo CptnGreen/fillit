@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 00:17:47 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		get_min_sq_side(char *shapes);
@@ -32,11 +44,8 @@ int		main(int argc, char **argv)
 	{
 		m_str = compose_mstr_of_opts_from_shapes_str(sq_side, shapes);
 		m_lst = get_mlst_from_mstr(m_str);
-		/* print_mlst(m_lst); */
 		if (gbo(m_lst))
 		{
-			/* printf("Best options:\n\n"); */
-			/* print_mlst(m_lst); */
 			update_mlst_status(m_lst, n_of);
 			printf("Min sq_side = %d:\n\n", sq_side); // remove later!
 			m_str = opts_lst_to_square_str(m_lst, sq_side);
@@ -57,6 +66,7 @@ int		get_min_sq_side(char *shapes)
 	int	sq_side;
 
 	n_tetr = (ft_strlen(shapes) / 2);
+	sq_side = 2;
 	while (n_tetr * 4 > sq_side * sq_side)
 		sq_side += 1;
 	return (sq_side);

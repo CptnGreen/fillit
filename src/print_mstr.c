@@ -1,10 +1,5 @@
 #include "fillit.h"
 
-/*
-** Функция для вывода матрицы на экран.
-** Каждая строка должна оканчиваться символом '\0'!
-*/
-
 void	print_mstr(char **matrix)
 {
     int	i;
@@ -12,10 +7,6 @@ void	print_mstr(char **matrix)
 	int	sq_side;
 
 	n_of_items = get_mstr_w(matrix);
-	sq_side = sqrt(n_of_items);
-
-	/* printf("     sq_side = %d     \n", sq_side); */
-	/* printf("=====================\n"); */
 
     i = 0;
 	printf("    ");

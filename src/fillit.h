@@ -6,14 +6,13 @@
 /*   By: slisandr <slisandr@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 16:55:05 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/06 00:12:30 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 00:13:15 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <math.h> // remove later!
 # include <stdio.h> // remove later!
 # include <time.h> // remove later!
 

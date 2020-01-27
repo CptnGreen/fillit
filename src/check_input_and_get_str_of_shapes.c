@@ -20,10 +20,7 @@ int	check_input_and_get_str_of_shapes(int const fd, char *shapes)
     i = 0;
     tetriminoes[i] = ft_strnew(6);
     while (get_next_line(fd, tetriminoes + i))
-    {
-        i++;
-        tetriminoes[i] = ft_strnew(6);
-    }
+        tetriminoes[++i] = ft_strnew(6);
     res = check_and_append_tetr_code_to_str(tetriminoes, i - 1, shapes);
     if (res == -1)
         printf("error: this tetrimino is not valid\n");
