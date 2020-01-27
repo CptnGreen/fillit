@@ -5,7 +5,7 @@
 ** Каждая строка должна оканчиваться символом '\0'!
 */
 
-void	print_matrix_str(char **matrix)
+void	print_mstr(char **matrix)
 {
     int	i;
 	int	n_of_items;
@@ -14,8 +14,8 @@ void	print_matrix_str(char **matrix)
 	n_of_items = get_mstr_w(matrix);
 	sq_side = sqrt(n_of_items);
 
-	printf("     sq_side = %d     \n", sq_side);
-	printf("=====================\n");
+	/* printf("     sq_side = %d     \n", sq_side); */
+	/* printf("=====================\n"); */
 
     i = 0;
 	printf("    ");

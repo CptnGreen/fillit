@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-void	cover_item_of_node(t_node **m_lst, t_node *hdr)
+void	cover_item(t_node **m_lst, t_node *hdr)
 {
 	t_node	*cur;
 	t_node	*tmp;

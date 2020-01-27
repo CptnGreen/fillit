@@ -18,7 +18,7 @@ void	unchoose_option(t_node **m_lst, int n_opt)
 		{
 			while (hdr->y != m_lst[i]->y)
 				hdr = hdr->r;
-			uncover_item_of_node(m_lst, hdr);
+			uncover_item(m_lst, hdr);
 			i -= 1;
 		}
 		m_lst[i]->c = m_lst[i]->r->c;

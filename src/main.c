@@ -26,21 +26,21 @@ int		main(int argc, char **argv)
 	shapes = ft_strnew(MAX_N_OF_TETR * 2);
 	check_input_and_get_str_of_shapes(fd, shapes);
 	close(fd);
-	printf("Shapes: %s\n\n", shapes); // remove later!
+	printf("Shapes (n = %d): %s\n\n", (int)(ft_strlen(shapes) / 2), shapes);
 	sq_side = get_min_sq_side(shapes);
 	while (sq_side <= MAX_SQ_SIDE)
 	{
 		m_str = compose_mstr_of_opts_from_shapes_str(sq_side, shapes);
 		m_lst = get_mlst_from_mstr(m_str);
-		/* print_matrix_lst_conseq(m_lst); */
+		/* print_mlst(m_lst); */
 		if (gbo(m_lst))
 		{
 			/* printf("Best options:\n\n"); */
-			/* print_matrix_lst_conseq(m_lst); */
+			/* print_mlst(m_lst); */
 			update_mlst_status(m_lst, n_of);
 			printf("Min sq_side = %d:\n\n", sq_side); // remove later!
 			m_str = opts_lst_to_square_str(m_lst, sq_side);
-			print_matrix_str(m_str);
+			print_mstr(m_str);
 			break ;
 		}
 		sq_side += 1;

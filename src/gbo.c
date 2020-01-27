@@ -11,8 +11,6 @@ int		gbo(t_node **m_lst)
 	{
 		i = 0;
 		is_first = 1;
-		/* printf("gbo: I'm here! New matrix:\n"); */
-		/* print_matrix_lst_conseq(m_lst); */
 		while (1)
 		{
 			if (is_first && m_lst[0]->role != 'z')

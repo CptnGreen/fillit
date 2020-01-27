@@ -122,8 +122,8 @@ int						get_num_of_tetr_mlst_conseq(t_node **m_lst);
 ** Debugging:
 */
 
-void					print_matrix_str(char **matrix);
-void					print_matrix_lst_conseq(t_node **);
+void					print_mstr(char **matrix);
+void					print_mlst(t_node **);
 void					print_node_info(t_node *node);
 void					print_all_nodes_mlst(t_node **m_lst);
 
@@ -133,7 +133,7 @@ void					print_all_nodes_mlst(t_node **m_lst);
 
 void	choose_option(t_node **m_lst, int n_opt);
 void	cover_item_except_one_opt(t_node **m_lst, int n_item, int n_opt);
-void	cover_item_of_node(t_node **m_lst, t_node *node);
+void	cover_item(t_node **m_lst, t_node *node);
 void	cover_option_of_node(t_node **m_lst, t_node *node);
 void	delete_node(t_node *node);
 int		get_best_opts(t_node **m_lst);
@@ -142,7 +142,7 @@ int		get_first_block_num_in_option(t_node **m_lst, int n_opt);
 int		get_last_block_num_in_option(t_node **m_lst, int n_opt);
 void	insert_node(t_node *node);
 void	unchoose_option(t_node **m_lst, int n_opt);
-void	uncover_item_of_node(t_node **m_lst, t_node *node);
+void	uncover_item(t_node **m_lst, t_node *node);
 void	uncover_option_of_node(t_node **m_lst, t_node *node);
 
 int		gbo(t_node **m_lst);

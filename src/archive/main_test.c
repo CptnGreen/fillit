@@ -26,9 +26,9 @@ int		main(int argc, char **argv)
 	/* sq_side = get_min_sq_side(shapes); */
 	sq_side = 4;
 	m_str = compose_mstr_of_opts_from_shapes_str(sq_side, shapes);
-	print_matrix_str(m_str);
+  print_mstr(m_str);
 	m_lst = get_mlst_from_mstr(m_str);
-	printf("I'm here!\n");
+  printf("I'm here!\n");
 	print_mlst(m_lst);
 
 	i = 0;
@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 		choose_option(m_lst, i++);
 
 	m_str = opts_lst_to_square_str(m_lst, sq_side);
-	print_matrix_str(m_str);
+	print_mstr(m_str);
 
 	i = 10;
 	while (i >= 0)

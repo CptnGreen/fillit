@@ -20,7 +20,7 @@ void	choose_option(t_node **m_lst, int n_opt)
 		{
 			while (hdr->y != m_lst[i + 1 + j]->y)
 				hdr = hdr->r;
-			cover_item_of_node(m_lst, hdr);
+			cover_item(m_lst, hdr);
 			j += 1;
 		}
 	}
