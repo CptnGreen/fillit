@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_num_of_tetr_mlst.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 02:43:21 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:43:27 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 22:42:43 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 22:42:47 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	get_num_of_tetr_mlst(t_node **m_lst)
+int		get_num_of_tetr_mlst(t_node **m_lst)
 {
 	int		num;
-	char		prev;
+	char	prev;
 	int		i;
 
-	i = num = 0;
+	num = 0;
+	i = 0;
 	prev = '0';
 	while (m_lst[i])
 	{
@@ -32,11 +33,26 @@ int	get_num_of_tetr_mlst(t_node **m_lst)
 	return (num);
 }
 
-int	get_num_of_tetr_mlst_conseq(t_node **m_lst)
+void	get_num__handle_item(\
+	t_node **cur, char *prev, int *num, int *found_new_char)
 {
-	int	num;
+	while ((*cur)->role != 'h')
+	{
+		if ((*cur)->role == 'b' && (*cur)->c == (*prev) + 1)
+		{
+			(*prev) = (*cur)->c;
+			(*found_new_char) = 1;
+			(*num) += 1;
+		}
+		(*cur) = (*cur)->d;
+	}
+}
+
+int		get_num_of_tetr_mlst_conseq(t_node **m_lst)
+{
+	int		num;
 	char	prev;
-	int	found_new_char;
+	int		found_new_char;
 	t_node	*cur;
 
 	num = 0;
@@ -49,19 +65,7 @@ int	get_num_of_tetr_mlst_conseq(t_node **m_lst)
 		while (cur->role == 'h')
 		{
 			cur = cur->d;
-			while (cur->role != 'h')
-			{
-				if (cur->role == 'b')
-				{
-					if (cur->c == prev + 1)
-					{
-						prev = cur->c;
-						found_new_char = 1;
-						num += 1;
-					}
-				}
-				cur = cur->d;
-			}
+			get_num__handle_item(&cur, &prev, &num, &found_new_char);
 			cur = cur->r;
 		}
 	}

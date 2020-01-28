@@ -6,7 +6,7 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 03:18:22 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 20:38:26 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:23:17 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,7 @@ void					print_mstr(char **matrix);
 size_t					get_num_of_blocks_in_mstr(char **m);
 void					create_vert_connections_in_mlst(t_node **m_lst);
 void					connect_nodes_vert(t_node *down, t_node *up);
+void					translate_blocks_and_spacers(\
+	t_node **m_lst, char **m_str, size_t w, size_t n);
 
 #endif
