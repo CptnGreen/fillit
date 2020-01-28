@@ -36,7 +36,7 @@ char	**opts_lst_to_square_str(t_node **m_lst, int sq_side)
 		{
 			x = cur->y / sq_side;
 			y = cur->y % sq_side;
-			m_str[x][y] = cur->c;
+			m_str[x][y] = ft_toupper(cur->c);
 		}
 		i += 1;
 	}
