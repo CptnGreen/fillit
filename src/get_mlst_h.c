@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_mlst_h.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/28 02:41:39 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 02:41:48 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		get_mlst_h(t_node **m_lst)
 {
-    int		num_of_s;
+	int		num_of_s;
 	t_node	*cur;
 
 	cur = m_lst[0];
@@ -13,5 +25,5 @@ int		get_mlst_h(t_node **m_lst)
 		num_of_s += 1;
 		cur = cur->d;
 	}
-    return (num_of_s);
+	return (num_of_s);
 }

@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/01/28 02:16:40 by slisandr         ###   ########.fr        #
+#    Updated: 2020/01/28 03:29:57 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,8 +45,6 @@ SRCS = \
 	src/cover_option_of_node.c \
 	src/delete_node.c \
 	src/update_mlst_status.c \
-	src/get_first_block_num_in_option.c \
-	src/get_last_block_num_in_option.c \
 	src/insert_node.c \
 	src/unchoose_option.c \
 	src/uncover_item.c \
@@ -55,6 +53,7 @@ SRCS = \
 	src/get_next_submatrix_ptr.c \
 	src/skip_to_next_unempty_opt.c \
 	src/print_mstr.c \
+	src/get_num_of_blocks_in_mstr.c \
 	src/cover_item.c
 
 OBJS = \
@@ -82,8 +81,6 @@ OBJS = \
 	cover_option_of_node.o \
 	delete_node.o \
 	update_mlst_status.o \
-	get_first_block_num_in_option.o \
-	get_last_block_num_in_option.o \
 	insert_node.o \
 	unchoose_option.o \
 	uncover_item.o \
@@ -92,6 +89,7 @@ OBJS = \
 	get_next_submatrix_ptr.o \
 	skip_to_next_unempty_opt.o \
 	print_mstr.o \
+	get_num_of_blocks_in_mstr.o \
 	cover_item.o
 
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gbo.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/28 02:41:24 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 03:34:18 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int		gbo(t_node **m_lst)
@@ -23,9 +35,7 @@ int		gbo(t_node **m_lst)
 			if (n_of[CHOS] == n_of[TETR_ALL])
 				return (SUCCESS);
 			mlst_new = get_next_submatrix_ptr(m_lst, i);
-			if (n_of[OPTS] + n_of[CHOS] < n_of[TETR_ALL] || \
-				n_of[TETR_PRES] + n_of[CHOS] < n_of[TETR_ALL] || \
-				!mlst_new)
+			if (n_of[TETR_PRES] + n_of[CHOS] < n_of[TETR_ALL] || !mlst_new)
 			{
 				unchoose_option(m_lst, m_lst[i]->x);
 				continue ;

@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_mstr.c                                       :+:      :+:    :+:   */
+/*   get_num_of_blocks_in_mstr.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 03:31:45 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:31:56 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 03:27:29 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 03:27:37 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_mstr(char **matrix)
+size_t		get_num_of_blocks_in_mstr(char **m)
 {
-	int	i;
+	size_t	num;
+	int		i;
+	int		j;
 
+	num = 0;
 	i = 0;
-	while (matrix[i])
+	while (m[i])
 	{
-		ft_putendl(matrix[i]);
+		j = 0;
+		while (m[i][j])
+		{
+			if (m[i][j] != '.')
+				num++;
+			j++;
+		}
 		i++;
 	}
+	return (num);
 }

@@ -6,26 +6,26 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:29:37 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:30:19 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 03:22:15 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*get_tetr_sign_L(char tetr_type, char tetr_subtype);
-char	*get_tetr_sign_ZO(char tetr_type, char tetr_subtype);
-char	*get_tetr_sign_TI(char tetr_type, char tetr_subtype);
+char	*get_tetr_sign_l(char tetr_type, char tetr_subtype);
+char	*get_tetr_sign_zo(char tetr_type, char tetr_subtype);
+char	*get_tetr_sign_ti(char tetr_type, char tetr_subtype);
 
 char	*get_tetr_sign(char tetr_type, char tetr_subtype)
 {
 	if (tetr_type == 'L')
-		return (get_tetr_sign_L(tetr_type, tetr_subtype));
+		return (get_tetr_sign_l(tetr_type, tetr_subtype));
 	else if (tetr_type == 'Z' || tetr_type == 'O')
-		return (get_tetr_sign_ZO(tetr_type, tetr_subtype));
+		return (get_tetr_sign_zo(tetr_type, tetr_subtype));
 	else if (tetr_type == 'T' || tetr_type == 'I')
-		return (get_tetr_sign_TI(tetr_type, tetr_subtype));
+		return (get_tetr_sign_ti(tetr_type, tetr_subtype));
 	return ("00000000");
 }
 
-char	*get_tetr_sign_L(char tetr_type, char tetr_subtype)
+char	*get_tetr_sign_l(char tetr_type, char tetr_subtype)
 {
 	if (tetr_type == 'L')
 	{
@@ -49,7 +49,7 @@ char	*get_tetr_sign_L(char tetr_type, char tetr_subtype)
 	return ("00000000");
 }
 
-char	*get_tetr_sign_ZO(char tetr_type, char tetr_subtype)
+char	*get_tetr_sign_zo(char tetr_type, char tetr_subtype)
 {
 	if (tetr_type == 'Z')
 	{
@@ -72,7 +72,7 @@ char	*get_tetr_sign_ZO(char tetr_type, char tetr_subtype)
 	return ("00000000");
 }
 
-char	*get_tetr_sign_TI(char tetr_type, char tetr_subtype)
+char	*get_tetr_sign_ti(char tetr_type, char tetr_subtype)
 {
 	if (tetr_type == 'T')
 	{

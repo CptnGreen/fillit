@@ -6,15 +6,11 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 00:29:09 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:24:43 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 03:40:05 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-char	*get_tetr_shape_type_io(int *i, int *l);
-char	*get_tetr_shape_type_l(int *i, int *l);
-char	*get_tetr_shape_type_tz(int *i, int *l);
 
 char	*get_tetr_shape_type(int *i, int *l)
 {
@@ -37,8 +33,8 @@ char	*get_tetr_shape_type_io(int *i, int *l)
 		l[2] - l[1] == 1 && l[3] - l[2] == 1)
 		return ("I2");
 	else if (l[0] == l[1] && l[1] == l[2] && \
-			 l[2] == l[3] && i[1] - i[0] == 1 && \
-			 i[2] - i[1] == 1 && i[3] - i[2] == 1)
+			l[2] == l[3] && i[1] - i[0] == 1 && \
+			i[2] - i[1] == 1 && i[3] - i[2] == 1)
 		return ("I1");
 	else if (i[0] == i[1] && i[2] == i[3] && i[1] != i[2] && l[0] == l[2])
 		return ("O1");

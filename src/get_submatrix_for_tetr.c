@@ -6,15 +6,11 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:33:05 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:33:37 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 03:41:52 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	fill_submatrix(char **sub_matrix, unsigned int a, \
-					   unsigned int start_row, char *sgn, char filler);
-
 
 char	**get_submatrix_for_tetr(\
 	unsigned int sq_side, \
@@ -24,8 +20,8 @@ char	**get_submatrix_for_tetr(\
 {
 	char					**sub_matrix;
 	char					*row;
-	unsigned int	num_of_options;
-	unsigned int	num_of_items;
+	unsigned int			num_of_options;
+	unsigned int			num_of_items;
 	char					*sgn;
 
 	if (POSSIBLE_SHAPES)
@@ -44,13 +40,11 @@ char	**get_submatrix_for_tetr(\
 }
 
 void	fill_submatrix(char **sub_matrix, unsigned int a, \
-					   unsigned int start_row, char *sgn, char filler)
+					   unsigned int r, char *sgn, char filler)
 {
 	int						i;
 	int						j;
-	int						r;
 
-	r = start_row;
 	j = 0;
 	while (sgn[0] + j - '0' <= (a - 1) && sgn[2] + j - '0' <= (a - 1) && \
 		   sgn[4] + j - '0' <= (a - 1) && sgn[6] + j - '0' <= (a - 1))

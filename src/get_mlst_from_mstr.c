@@ -6,24 +6,13 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:27:31 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:28:36 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 03:28:32 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-size_t		get_num_of_blocks_in_mstr(char **m);
-void		create_vert_connections_in_mlst(t_node **m_lst);
-void		connect_nodes_vert(t_node *down, t_node *up);
-void		make_super_connections(t_node **m_lst);
-void		connect_headers_to_first_nodes(t_node **m_lst);
-void		connect_block_nodes(t_node **m_lst);
-void		translate_upper_row(t_node **m_lst, size_t w);
-void		translate_blocks_and_spacers(\
-	t_node **m_lst, char **m_str, size_t w, size_t h, size_t n);
-void		remember_inferior_nodes(t_node **m_lst);
-
-t_node	**get_mlst_from_mstr(char **m_str)
+t_node		**get_mlst_from_mstr(char **m_str)
 {
 	t_node	**m_lst;
 	size_t	h;
@@ -40,7 +29,7 @@ t_node	**get_mlst_from_mstr(char **m_str)
 	return (m_lst);
 }
 
-void			translate_upper_row(t_node **m_lst, size_t w)
+void		translate_upper_row(t_node **m_lst, size_t w)
 {
 	int			i;
 	size_t		n;
@@ -59,13 +48,14 @@ void			translate_upper_row(t_node **m_lst, size_t w)
 	m_lst[0]->l = m_lst[i - 1];
 }
 
-void			translate_blocks_and_spacers(\
+void		translate_blocks_and_spacers(\
 	t_node **m_lst, char **m_str, size_t w, size_t h, size_t n)
 {
 	int			i;
 	int			x;
 	int			y;
 	t_node		*spacer;
+	int			j;
 
 	i = w + 1;
 	x = 0;
@@ -93,7 +83,9 @@ void			translate_blocks_and_spacers(\
 			m_lst[i]->u = spacer;
 			spacer->d = m_lst[i];
 			spacer = m_lst[i];
-			m_lst[i - 1]->r = m_lst[i - 2]->r = m_lst[i - 3]->r = m_lst[i - 4]->r = spacer;
+			j = 0;
+			while (j < 4)
+				m_lst[i - 1 - j++]->r = spacer;
 			spacer->l = m_lst[i - 1];
 			i++;
 			x++;
@@ -126,7 +118,6 @@ void		remember_inferior_nodes(t_node **m_lst)
 	}
 }
 
-
 void		connect_headers_to_first_nodes(t_node **m_lst)
 {
 	int			n;
@@ -156,8 +147,6 @@ void		connect_block_nodes(t_node **m_lst)
 {
 	int			n;
 	int			item;
-	int			i;
-	t_node		*prev;
 	t_node		*cur;
 
 	n = 1;
@@ -165,29 +154,30 @@ void		connect_block_nodes(t_node **m_lst)
 	while (m_lst[n]->role == 'h')
 	{
 		if (m_lst[n]->d)
-		{
-			prev = m_lst[n]->d;
-			i = prev->n + 1;
-			while (m_lst[i])
-			{
-				if (m_lst[i]->y == item)
-				{
-					connect_nodes_vert(m_lst[i], prev);
-					prev = m_lst[i];
-				}
-				i += 1;
-			}
-			connect_nodes_vert(m_lst[n], prev);
-			n++;
-			item += 1;
-		}
+			connect_column(m_lst, item, n);
 		else
-		{
 			connect_nodes_vert(m_lst[n], m_lst[n]);
-			n++;
-			item += 1;
+		n++;
+		item += 1;
+	}
+}
+
+void		connect_column(t_node **m_lst, int item, int n)
+{
+	int			i;
+	t_node		*prev;
+
+	prev = m_lst[n]->d;
+	i = prev->n;
+	while (m_lst[++i])
+	{
+		if (m_lst[i]->y == item)
+		{
+			connect_nodes_vert(m_lst[i], prev);
+			prev = m_lst[i];
 		}
 	}
+	connect_nodes_vert(m_lst[n], prev);
 }
 
 void		make_super_connections(t_node **m_lst)
@@ -209,26 +199,4 @@ void		connect_nodes_vert(t_node *down, t_node *up)
 {
 	up->d = down;
 	down->u = up;
-}
-
-size_t	get_num_of_blocks_in_mstr(char **m)
-{
-	size_t	num;
-	int			i;
-	int			j;
-
-	num = 0;
-	i = 0;
-	while (m[i])
-	{
-		j = 0;
-		while (m[i][j])
-		{
-			if (m[i][j] != '.')
-				num++;
-			j++;
-		}
-		i++;
-	}
-	return (num);
 }

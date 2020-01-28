@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_input_and_get_str_of_shapes.c                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/28 02:39:37 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 03:29:30 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 #define CHECK_ERROR -1
@@ -19,7 +31,7 @@ int	check_input_and_get_str_of_shapes(int const fd, char *shapes)
 	tetriminoes = (char **)malloc(MAX_INPUT_LINES * sizeof(char *));
 	if (!tetriminoes)
 	{
-		printf("error: this tetriminoes is not valid");
+		ft_putendl("error: this tetriminoes is not valid");
 		return (0);
 	}
 	i = res = 0;
@@ -28,7 +40,7 @@ int	check_input_and_get_str_of_shapes(int const fd, char *shapes)
 		tetriminoes[++i] = ft_strnew(6);
 	res = check_and_append_tetr_code_to_str(tetriminoes, i - 1, shapes);
 	if (res == -1)
-		printf("error: this tetrimino is not valid\n");
+		ft_putendl("error: this tetrimino is not valid");
 	return (CHECK_SUCCESS);
 }
 
