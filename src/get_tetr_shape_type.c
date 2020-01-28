@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_tetr_shape_type.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 00:29:09 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:40:05 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 20:02:11 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 20:02:59 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-char	*get_tetr_shape_type(int *i, int *l)
-{
-	char	*status;
-
-	if ((status = get_tetr_shape_type_io(i, l)))
-		return (status);
-	else if ((status = get_tetr_shape_type_tz(i, l)))
-		return (status);
-	else if ((status = get_tetr_shape_type_l(i, l)))
-		return (status);
-	else
-		return ("Error");
-}
 
 char	*get_tetr_shape_type_io(int *i, int *l)
 {
@@ -84,4 +70,18 @@ char	*get_tetr_shape_type_tz(int *i, int *l)
 		return ("T4");
 	else
 		return (NULL);
+}
+
+char	*get_tetr_shape_type(int *i, int *l)
+{
+	char	*status;
+
+	if ((status = get_tetr_shape_type_io(i, l)))
+		return (status);
+	else if ((status = get_tetr_shape_type_tz(i, l)))
+		return (status);
+	else if ((status = get_tetr_shape_type_l(i, l)))
+		return (status);
+	else
+		return ("Error");
 }

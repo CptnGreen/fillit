@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_number_of_options_for_tetrimino.c              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 03:35:49 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:36:01 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 20:08:16 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 20:08:21 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

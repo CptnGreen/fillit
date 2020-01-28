@@ -3,38 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   get_mlst_from_mstr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 02:27:31 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:28:32 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 21:29:53 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 21:47:35 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-t_node		**get_mlst_from_mstr(char **m_str)
-{
-	t_node	**m_lst;
-	size_t	h;
-	size_t	w;
-	size_t	n;
-
-	w = get_mstr_w(m_str);
-	h = get_mstr_h(m_str);
-	n = get_num_of_blocks_in_mstr(m_str);
-	m_lst = (t_node **)malloc((h + w + n + 3) * sizeof(t_node *));
-	translate_upper_row(m_lst, w);
-	translate_blocks_and_spacers(m_lst, m_str, w, h, n);
-	create_vert_connections_in_mlst(m_lst);
-	return (m_lst);
-}
 
 void		translate_upper_row(t_node **m_lst, size_t w)
 {
 	int			i;
 	size_t		n;
 
-	m_lst[0] = get_new_node(0, 'z', 'z', -1, -1);
+	m_lst[0] = get_new_node(0, 'z', 'Z', -1, -1);
 	i = 1;
 	while (i < (w + 1))
 	{
@@ -48,8 +31,17 @@ void		translate_upper_row(t_node **m_lst, size_t w)
 	m_lst[0]->l = m_lst[i - 1];
 }
 
+void		translate_last_node(t_node **m_lst, int i)
+{
+	m_lst[i] = NULL;
+	m_lst[i - 1]->d = m_lst[0];
+	m_lst[0]->u = m_lst[i - 1];
+	m_lst[i - 1]->c = '$';
+}
+
 void		translate_blocks_and_spacers(\
-	t_node **m_lst, char **m_str, size_t w, size_t h, size_t n)
+				t_node **m_lst, char **m_str, size_t w, \
+				size_t h, size_t n)
 {
 	int			i;
 	int			x;
@@ -92,111 +84,22 @@ void		translate_blocks_and_spacers(\
 			y = -1;
 		}
 	}
-	m_lst[i] = NULL;
-	m_lst[i - 1]->d = m_lst[0];
-	m_lst[0]->u = m_lst[i - 1];
-	m_lst[i - 1]->c = '$';
+	translate_last_node(m_lst, i);
 }
 
-void		create_vert_connections_in_mlst(t_node **m_lst)
+t_node		**get_mlst_from_mstr(char **m_str)
 {
-	connect_headers_to_first_nodes(m_lst);
-	connect_block_nodes(m_lst);
-	make_super_connections(m_lst);
-	remember_inferior_nodes(m_lst);
-}
+	t_node	**m_lst;
+	size_t	h;
+	size_t	w;
+	size_t	n;
 
-void		remember_inferior_nodes(t_node **m_lst)
-{
-	t_node	*cur;
-
-	cur = m_lst[0]->r;
-	while (cur->role != 'z')
-	{
-		cur->s = cur->u;
-		cur = cur->r;
-	}
-}
-
-void		connect_headers_to_first_nodes(t_node **m_lst)
-{
-	int			n;
-	int			item;
-	int			i;
-
-	n = 1;
-	item = 0;
-	while (m_lst[n]->role == 'h')
-	{
-		i = n + 1;
-		while (m_lst[i])
-		{
-			if (m_lst[i]->y == item)
-			{
-				connect_nodes_vert(m_lst[i], m_lst[n]);
-				break ;
-			}
-			i += 1;
-		}
-		n += 1;
-		item += 1;
-	}
-}
-
-void		connect_block_nodes(t_node **m_lst)
-{
-	int			n;
-	int			item;
-	t_node		*cur;
-
-	n = 1;
-	item = 0;
-	while (m_lst[n]->role == 'h')
-	{
-		if (m_lst[n]->d)
-			connect_column(m_lst, item, n);
-		else
-			connect_nodes_vert(m_lst[n], m_lst[n]);
-		n++;
-		item += 1;
-	}
-}
-
-void		connect_column(t_node **m_lst, int item, int n)
-{
-	int			i;
-	t_node		*prev;
-
-	prev = m_lst[n]->d;
-	i = prev->n;
-	while (m_lst[++i])
-	{
-		if (m_lst[i]->y == item)
-		{
-			connect_nodes_vert(m_lst[i], prev);
-			prev = m_lst[i];
-		}
-	}
-	connect_nodes_vert(m_lst[n], prev);
-}
-
-void		make_super_connections(t_node **m_lst)
-{
-	int		i;
-
-	i = 0;
-	while (m_lst[i])
-	{
-		if (m_lst[i]->role == 'b' || m_lst[i]->role == 'h')
-			m_lst[i]->s = m_lst[i]->u;
-		else if (m_lst[i]->role == 'z' || m_lst[i]->role == 's')
-			m_lst[i]->s = m_lst[m_lst[i]->y + 1];
-		i += 1;
-	}
-}
-
-void		connect_nodes_vert(t_node *down, t_node *up)
-{
-	up->d = down;
-	down->u = up;
+	w = get_mstr_w(m_str);
+	h = get_mstr_h(m_str);
+	n = get_num_of_blocks_in_mstr(m_str);
+	m_lst = (t_node **)malloc((h + w + n + 3) * sizeof(t_node *));
+	translate_upper_row(m_lst, w);
+	translate_blocks_and_spacers(m_lst, m_str, w, h, n);
+	create_vert_connections_in_mlst(m_lst);
+	return (m_lst);
 }

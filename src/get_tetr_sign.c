@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_tetr_sign.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 02:29:37 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:22:15 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 20:42:08 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 20:42:19 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*get_tetr_sign_l(char tetr_type, char tetr_subtype);
-char	*get_tetr_sign_zo(char tetr_type, char tetr_subtype);
-char	*get_tetr_sign_ti(char tetr_type, char tetr_subtype);
-
-char	*get_tetr_sign(char tetr_type, char tetr_subtype)
-{
-	if (tetr_type == 'L')
-		return (get_tetr_sign_l(tetr_type, tetr_subtype));
-	else if (tetr_type == 'Z' || tetr_type == 'O')
-		return (get_tetr_sign_zo(tetr_type, tetr_subtype));
-	else if (tetr_type == 'T' || tetr_type == 'I')
-		return (get_tetr_sign_ti(tetr_type, tetr_subtype));
-	return ("00000000");
-}
+#include "fillit.h"
 
 char	*get_tetr_sign_l(char tetr_type, char tetr_subtype)
 {
@@ -92,5 +79,16 @@ char	*get_tetr_sign_ti(char tetr_type, char tetr_subtype)
 		else if (tetr_subtype == '2')
 			return ("00010203");
 	}
+	return ("00000000");
+}
+
+char	*get_tetr_sign(char tetr_type, char tetr_subtype)
+{
+	if (tetr_type == 'L')
+		return (get_tetr_sign_l(tetr_type, tetr_subtype));
+	else if (tetr_type == 'Z' || tetr_type == 'O')
+		return (get_tetr_sign_zo(tetr_type, tetr_subtype));
+	else if (tetr_type == 'T' || tetr_type == 'I')
+		return (get_tetr_sign_ti(tetr_type, tetr_subtype));
 	return ("00000000");
 }

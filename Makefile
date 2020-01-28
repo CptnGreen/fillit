@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/01/28 03:29:57 by slisandr         ###   ########.fr        #
+#    Updated: 2020/01/28 20:38:52 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -54,6 +54,8 @@ SRCS = \
 	src/skip_to_next_unempty_opt.c \
 	src/print_mstr.c \
 	src/get_num_of_blocks_in_mstr.c \
+	src/create_vert_connections_in_mlst.c \
+	src/connect_nodes_vert.c \
 	src/cover_item.c
 
 OBJS = \
@@ -90,6 +92,8 @@ OBJS = \
 	skip_to_next_unempty_opt.o \
 	print_mstr.o \
 	get_num_of_blocks_in_mstr.o \
+	create_vert_connections_in_mlst.o \
+	connect_nodes_vert.o \
 	cover_item.o
 
 

@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   opts_lst_to_square_str.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 02:46:39 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:46:45 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 20:00:01 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 20:00:08 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		check_spacer(t_node **m_lst, t_node *cur);
+int		check_spacer(t_node **m_lst, t_node *cur)
+{
+	if (cur->l->c == '*')
+		return (1);
+	return (0);
+}
 
 char	**opts_lst_to_square_str(t_node **m_lst, int sq_side)
 {
@@ -36,11 +41,4 @@ char	**opts_lst_to_square_str(t_node **m_lst, int sq_side)
 		i += 1;
 	}
 	return (m_str);
-}
-
-int		check_spacer(t_node **m_lst, t_node *cur)
-{
-	if (cur->l->c == '*')
-		return (1);
-	return (0);
 }

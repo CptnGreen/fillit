@@ -6,7 +6,7 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 03:18:22 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:54:29 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 20:38:26 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,18 +98,5 @@ void					print_mstr(char **matrix);
 size_t					get_num_of_blocks_in_mstr(char **m);
 void					create_vert_connections_in_mlst(t_node **m_lst);
 void					connect_nodes_vert(t_node *down, t_node *up);
-void					make_super_connections(t_node **m_lst);
-void					connect_headers_to_first_nodes(t_node **m_lst);
-void					connect_block_nodes(t_node **m_lst);
-void					connect_column(t_node **m_lst, int item, int n);
-void					translate_upper_row(t_node **m_lst, size_t w);
-void					translate_blocks_and_spacers(\
-	t_node **m_lst, char **m_str, size_t w, size_t h, size_t n);
-void					remember_inferior_nodes(t_node **m_lst);
-void					fill_submatrix(char **sub_matrix, unsigned int a, \
-									   unsigned int start_row, char *sgn, char filler);
-char					*get_tetr_shape_type_io(int *i, int *l);
-char					*get_tetr_shape_type_l(int *i, int *l);
-char					*get_tetr_shape_type_tz(int *i, int *l);
 
 #endif

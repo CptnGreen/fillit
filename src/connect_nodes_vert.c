@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uncover_item.c                                     :+:      :+:    :+:   */
+/*   connect_nodes_vert.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 20:07:20 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 20:07:24 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 20:38:01 by slisandr          #+#    #+#             */
+/*   Updated: 2020/01/28 20:38:06 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	uncover_item(t_node **m_lst, t_node *hdr)
+void		connect_nodes_vert(t_node *down, t_node *up)
 {
-	t_node	*cur;
-	int		n_item;
-
-	cur = hdr;
-	if (cur->c == 'h')
-	{
-		insert_node(cur);
-		cur->c = 'H';
-		cur = cur->s;
-		while (cur->role != 'h')
-		{
-			uncover_option_of_node(m_lst, cur);
-			cur = cur->s;
-		}
-	}
+	up->d = down;
+	down->u = up;
 }
