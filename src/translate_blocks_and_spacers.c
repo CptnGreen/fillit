@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 22:21:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 22:21:58 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:53:07 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void		translate_first_spacer(t_node **m_lst, int *i, t_node **spacer)
 {
-	m_lst[*i] = get_new_node(*i, 's', 's', 0, -1);
+	m_lst[*i] = get_new_node(*i, 's', 0, -1);
+	m_lst[*i]->c = 'S';
 	*spacer = m_lst[*i];
 	(*spacer)->u = m_lst[0];
 	m_lst[0]->d = *spacer;
@@ -25,7 +26,8 @@ void		translate_endl(t_node **m_lst, int *x, int *i, t_node **spacer)
 {
 	int		j;
 
-	m_lst[*i] = get_new_node(*i, 's', 's', *x + 1, -1);
+	m_lst[*i] = get_new_node(*i, 's', *x + 1, -1);
+	m_lst[*i]->c = 'S';
 	m_lst[*i]->u = *spacer;
 	(*spacer)->d = m_lst[*i];
 	*spacer = m_lst[*i];
@@ -71,7 +73,8 @@ void		translate_blocks_and_spacers(\
 		y++;
 		if (m_str[x][y] >= 'A' && m_str[x][y] <= 'Z')
 		{
-			m_lst[i] = get_new_node(i, 'b', m_str[x][y], x, y);
+			m_lst[i] = get_new_node(i, 'b', x, y);
+			m_lst[i]->c = m_str[x][y];
 			translate_letter(m_lst, m_str[x][y], &i, &spacer);
 		}
 		else if (m_str[x][y] == '\0')

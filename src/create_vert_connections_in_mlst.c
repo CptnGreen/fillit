@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:33:30 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 20:40:20 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:56:57 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		connect_block_nodes_vertically(t_node **m_lst)
 void		make_super_connections(t_node **m_lst)
 {
 	int		i;
+	t_node	*cur;
 
 	i = 0;
 	while (m_lst[i])
@@ -87,12 +88,6 @@ void		make_super_connections(t_node **m_lst)
 			m_lst[i]->s = m_lst[m_lst[i]->y + 1];
 		i += 1;
 	}
-}
-
-void		remember_inferior_nodes(t_node **m_lst)
-{
-	t_node	*cur;
-
 	cur = m_lst[0]->r;
 	while (cur->role != 'z')
 	{
@@ -106,5 +101,4 @@ void		create_vert_connections_in_mlst(t_node **m_lst)
 	connect_headers_to_first_nodes(m_lst);
 	connect_block_nodes_vertically(m_lst);
 	make_super_connections(m_lst);
-	remember_inferior_nodes(m_lst);
 }

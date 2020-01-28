@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:29:53 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 22:23:02 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:53:07 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void		translate_upper_row(t_node **m_lst, size_t w)
 	int			i;
 	size_t		n;
 
-	m_lst[0] = get_new_node(0, 'z', 'Z', -1, -1);
+	m_lst[0] = get_new_node(0, 'z', -1, -1);
+	m_lst[0]->c = 'Z';
 	i = 1;
 	while (i < (w + 1))
 	{
-		m_lst[i] = get_new_node(\
-			i, 'h', 'H', -1, i - 1);
+		m_lst[i] = get_new_node(i, 'h', -1, i - 1);
+		m_lst[i]->c = 'H';
 		m_lst[i - 1]->r = m_lst[i];
 		m_lst[i]->l = m_lst[i - 1];
 		i++;

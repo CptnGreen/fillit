@@ -6,7 +6,7 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 03:18:22 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 22:23:17 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:53:40 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,8 @@ char					**get_submatrix_for_tetr(\
 char					**compose_mstr_of_opts_from_shapes_str(\
 	unsigned int sq_side, \
 	char *shapes);
-t_node					*get_new_node(\
-	unsigned int num_in_lst, char role, \
-	char character, int x_val, int y_val);
+t_node					*get_new_node(unsigned int num_in_lst, char role, \
+	int x_val, int y_val);
 t_node					**get_mlst_from_mstr(char **m_str);
 char					**opts_lst_to_square_str(\
 	t_node **m_lst, int sq_side);
