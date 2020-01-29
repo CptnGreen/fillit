@@ -13,7 +13,8 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include <time.h>
+# include <time.h> // remove later!
+# include <stdio.h> // remove later!
 # include "../libft/libft.h"
 
 # define POSSIBLE_SHAPES (									\

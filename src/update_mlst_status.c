@@ -51,7 +51,7 @@ void	update_mlst_status(t_node **m_lst, int *n_of)
 		}
 		else if (ft_isupper(cur->c))
 			handle_upper_letter(n_of, cur, &c_prev_pres, letter);
-		else if (ft_toupper(cur->c) > ft_toupper(c_prev_all))
+		if (ft_toupper(cur->c) > ft_toupper(c_prev_all))
 		{
 			n_of[TETR_ALL] += 1;
 			c_prev_all = ft_toupper(cur->r->c);

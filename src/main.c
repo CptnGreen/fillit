@@ -27,7 +27,6 @@ int		main(int argc, char **argv)
 	t_node		**m_lst;
 	char		*shapes;
 	int			sq_side;
-	int			n_of[4];
 
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
 		return (FAILURE);
@@ -42,7 +41,6 @@ int		main(int argc, char **argv)
 		m_lst = get_mlst_from_mstr(m_str);
 		if (gbo(m_lst))
 		{
-			update_mlst_status(m_lst, n_of);
 			m_str = opts_lst_to_square_str(m_lst, sq_side);
 			print_mstr(m_str);
 			break ;
@@ -56,9 +54,16 @@ int		get_min_sq_side(char *shapes)
 {
 	int	n_tetr;
 	int	sq_side;
+	int	len;
 
-	n_tetr = (ft_strlen(shapes) / 2);
-	sq_side = 2;
+	len = ft_strlen(shapes);
+	n_tetr = (len / 2);
+	if (len == 1 && ft_strchr(shapes, 'O'))
+		sq_side = 2;
+	else if (ft_strchr(shapes, 'I'))
+		sq_side = 4;
+	else
+		sq_side = 3;
 	while (n_tetr * 4 > sq_side * sq_side)
 		sq_side += 1;
 	return (sq_side);
