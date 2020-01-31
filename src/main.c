@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:30:58 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/01/31 17:00:04 by suvitiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ int		main(int argc, char **argv)
 
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
 	{
-		ft_putendl("error");
+		ft_putendl("error 1");
 		return (FAILURE);
 	}
 	shapes = ft_strnew(MAX_N_OF_TETR * 2);
 	if (check_input_and_get_str_of_shapes(fd, shapes) == -1)
 	{
-		ft_putendl("error");
+		ft_putendl("error 2");
 		return (ERROR);
 	}
+	printf("shapes: %s\n", shapes);
 	close(fd);
 	sq_side = get_min_sq_side(shapes);
 	while (sq_side <= MAX_SQ_SIDE)
