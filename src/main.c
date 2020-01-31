@@ -29,10 +29,16 @@ int		main(int argc, char **argv)
 	int			sq_side;
 
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
+	{
+		ft_putendl("error");
 		return (FAILURE);
+	}
 	shapes = ft_strnew(MAX_N_OF_TETR * 2);
 	if (check_input_and_get_str_of_shapes(fd, shapes) == -1)
+	{
+		ft_putendl("error");
 		return (ERROR);
+	}
 	close(fd);
 	sq_side = get_min_sq_side(shapes);
 	while (sq_side <= MAX_SQ_SIDE)

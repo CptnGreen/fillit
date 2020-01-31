@@ -18,7 +18,7 @@ TEST = tests/test
 
 CFLAGS = -Wall -Werror -Wextra
 
-EXEC = fillit
+NAME = fillit
 
 SRCS = \
 	src/get_number_of_options_for_tetrimino.c \
@@ -99,11 +99,11 @@ OBJS = \
 	cover_item.o
 
 
-all: $(EXEC)
+all: $(NAME)
 
 
-$(EXEC): $(OBJS)
-	@gcc $(CFLAGS) -o $(EXEC) $(OBJS) $(MAIN) -I . -L "libft/" -lft
+$(NAME): $(OBJS)
+	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN) -I . -L "libft/" -lft
 
 $(OBJS): $(SRCS)
 	@gcc $(FLAGS) -c $(SRCS)
@@ -112,10 +112,10 @@ clean:
 	@rm -rf $(OBJS)
 
 fclean: clean
-	@rm -rf $(EXEC)
+	@rm -rf $(NAME)
 
 re: fclean all
 
 test: re
 	clear
-	./$(EXEC) $(TEST)
+	./$(NAME) $(TEST)

@@ -30,7 +30,6 @@ int		gbo(t_node **m_lst)
 		is_first = 0;
 		choose_option(m_lst, m_lst[i]->x);
 		update_mlst_status(m_lst, n_of);
-		printf("n_tetr_all = %d\n", n_of[TETR_ALL]);
 		if (n_of[CHOS] == n_of[TETR_ALL])
 			return (SUCCESS);
 		mlst_new = get_next_submatrix_ptr(m_lst, i);
