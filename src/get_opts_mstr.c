@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compose_mstr_of_opts_from_shapes_str.c             :+:      :+:    :+:   */
+/*   get_opts_mstr.c             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:40:41 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:40:48 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 10:34:39 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**compose_mstr_of_opts_from_shapes_str(\
+char	**get_opts_mstr(\
 	unsigned int sq_side, \
 	char *shapes)
 {

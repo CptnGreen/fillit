@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 04:05:50 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 04:42:47 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/01 06:32:49 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/01 10:34:39 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,9 @@
 # define CH 1
 # define TA 2
 # define TU 3
-# include "../libft/libft.h"
 
-typedef struct			s_node{
-	struct s_node		*u;
-	struct s_node		*r;
-	struct s_node		*d;
-	struct s_node		*l;
-	struct s_node		*s;
-	char				c;
-	char				role;
-	int					x;
-	int					y;
-	unsigned int		n;
-}						t_node;
+# include "../libft/libft.h"
+# include "t_node.h"
 
 char					*get_tetr_sign(char tetr_type, char tetr_subtype);
 unsigned int			get_tetr_height(char tetr_type, char tetr_subtype);
@@ -42,11 +31,10 @@ int						get_number_of_options_for_tetrimino(\
 	unsigned int a, unsigned int h, unsigned int w);
 int						check_input_and_get_str_of_shapes(\
 	int const fd, char *shapes);
-char					*get_sequence_of_shape_types(int *i, int *l);
 char					**get_submatrix_for_tetr(\
 	unsigned int sq_side, char tetr_type, \
 	char tetr_subtype, unsigned int num_in_seq);
-char					**compose_mstr_of_opts_from_shapes_str(\
+char					**get_opts_mstr(\
 	unsigned int sq_side, \
 	char *shapes);
 t_node					*get_new_node(unsigned int num_in_lst, char role, \
@@ -65,14 +53,10 @@ int						get_mlst_w(t_node **m_lst);
 int						get_mlst_h(t_node **m_lst);
 int						get_n_of_opts_in_mlst(t_node **m_lst);
 int						get_num_of_tetr_mlst(t_node **m_lst);
-int						get_num_of_tetr_mlst_conseq(t_node **m_lst);
 void					choose_option(t_node **m_lst, int n_opt);
-void					cover_item_except_one_opt(t_node **m_lst, \
-	int n_item, int n_opt);
 void					cover_item(t_node **m_lst, t_node *node);
 void					cover_option_of_node(t_node **m_lst, t_node *node);
 void					delete_node(t_node *node);
-int						get_best_opts(t_node **m_lst);
 void					update_mlst_status(t_node **m_lst, int *n_of);
 void					insert_node(t_node *node);
 void					unchoose_option(t_node **m_lst, int n_opt);
@@ -88,5 +72,6 @@ void					connect_nodes_vert(t_node *down, t_node *up);
 void					translate_blocks_and_spacers(\
 	t_node **m_lst, char **m_str, size_t w, size_t n);
 char					*get_tetr_shape_type(int *i, int *l);
+void					wipe_mlst(t_node **m_lst);
 
 #endif

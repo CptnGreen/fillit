@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:50:19 by slisandr          #+#    #+#             */
-/*   Updated: 2019/10/30 17:11:05 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 10:16:56 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*increase_tail(char *tail, char *buff)
 	ft_memcpy(ptr, tail, i);
 	ft_memcpy(ptr + i, buff, j);
 	ptr[i + j] = '\0';
-	free(tail);
+	ft_strdel(&tail);
 	ft_bzero(buff, BUFF_SIZE + 1);
 	return (ptr);
 }
@@ -61,7 +61,7 @@ int		cut_off_line(char **tail, char **buff, char **line)
 		*line = ft_strdup(*tail);
 		leftover = *tail;
 		*tail = ft_strdup(*tail + endl_position + 1);
-		free(leftover);
+		ft_strdel(&leftover);
 		return (1);
 	}
 	return (0);
@@ -76,11 +76,14 @@ int		get_next_line(int const fd, char **line)
 
 	buff = ft_strnew(BUFF_SIZE);
 	if (line == 0 || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, buff, 0)) < 0)
+	{
+		ft_strdel(&buff);
 		return (-1);
+	}
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		got_new_line = cut_off_line(&tail[fd], &buff, line);
-		free(buff);
+		ft_strdel(&buff);
 		if (got_new_line == 1)
 			return (1);
 		buff = ft_strnew(BUFF_SIZE);
@@ -93,5 +96,6 @@ int		get_next_line(int const fd, char **line)
 		ft_strdel(&tail[fd]);
 		return (1);
 	}
+	ft_strdel(&buff);
 	return (0);
 }

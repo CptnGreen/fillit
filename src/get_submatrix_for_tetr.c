@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:23:05 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 04:02:46 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 09:29:09 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char	**get_submatrix_for_tetr(\
 		sub_matrix = get_matrix_of_dots(num_of_options, num_of_items);
 		sgn = ft_strdup(get_tetr_sign(tetr_type, tetr_subtype));
 		fill_submatrix(sub_matrix, sq_side, sgn, num_in_seq + 'A');
+		ft_strdel(&sgn);
 		return (sub_matrix);
 	}
 	return (NULL);

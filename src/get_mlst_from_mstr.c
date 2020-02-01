@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:29:53 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 22:53:07 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 08:36:45 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ t_node		**get_mlst_from_mstr(char **m_str)
 	translate_upper_row(m_lst, w);
 	translate_blocks_and_spacers(m_lst, m_str, w, n);
 	create_vert_connections_in_mlst(m_lst);
+	wipe_mstr(m_str);
 	return (m_lst);
 }

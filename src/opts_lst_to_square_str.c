@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:00:01 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 20:00:08 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 08:35:26 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ char	**opts_lst_to_square_str(t_node **m_lst, int sq_side)
 		}
 		i += 1;
 	}
+	wipe_mlst(m_lst);
 	return (m_str);
 }

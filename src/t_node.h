@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_mstr.c                                       :+:      :+:    :+:   */
+/*   t_node.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 20:03:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 08:38:33 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/01 06:22:49 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/01 06:23:34 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#ifndef T_NODE_H
+# define T_NODE_H
 
-void	print_mstr(char **matrix)
-{
-	int	i;
+typedef struct			s_node{
+	struct s_node		*u;
+	struct s_node		*r;
+	struct s_node		*d;
+	struct s_node		*l;
+	struct s_node		*s;
+	char				c;
+	char				role;
+	int					x;
+	int					y;
+	unsigned int		n;
+}						t_node;
 
-	i = 0;
-	while (matrix[i])
-	{
-		ft_putendl(matrix[i]);
-		i++;
-	}
-	wipe_mstr(matrix);
-}
+#endif

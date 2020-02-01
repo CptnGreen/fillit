@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_input_and_get_str_of_shapes.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 02:39:37 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 05:29:23 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/01 05:49:00 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/01 10:26:04 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#define CHECK_ERROR -1
-#define CHECK_SUCCESS 1
-
-#define MAX_INPUT_LINES ((4 + 1) * 26)
-
-/*
-** Функция получает проверяет 4 строки на то, являются ли они валидной
-** репрезантацией тетреминки.
-*/
 
 int	count_block_connections(char **t, int x, int y, int line)
 {
@@ -40,12 +30,11 @@ int	count_block_connections(char **t, int x, int y, int line)
 	return (n_block_connections);
 }
 
-int	check_if_endl(char **t, int *x, int *y, int *line)
+int	check_if_endl(char **t, int *x, int *y)
 {
 	if (t[*x][*y] == '\0')
 	{
 		*y = 0;
-		*line += 1;
 		*x += 1;
 		return (1);
 	}
@@ -54,33 +43,27 @@ int	check_if_endl(char **t, int *x, int *y, int *line)
 
 int	check_tetr(char **t, int *x, int *x1, int *y1)
 {
-	int		line;
 	int		n_block;
 	int		y;
 	int		n_tetr_connections;
 
-	line = 0;
 	n_block = 0;
 	y = 0;
 	n_tetr_connections = 0;
-	while (line < 4 && t[*x])
+	while ((*x % 5) < 4 && t[*x])
 	{
-		if (y == 4)
-		{
-			if (check_if_endl(t, x, &y, &line))
-				continue ;
-			return (-1);
-		}
-		else if (t[*x][y] == '.')
+		if (y != 4 && t[*x][y] == '.')
 			y++;
-		else if (t[*x][y] == '#')
+		else if (y != 4 && t[*x][y] == '#')
 		{
-			n_tetr_connections += count_block_connections(t, *x, y, line);
+			n_tetr_connections += count_block_connections(t, *x, y, *x % 5);
 			x1[n_block] = *x;
 			y1[n_block] = y++;
 			if (++n_block > 4)
 				return (-1);
 		}
+		else if (y == 4 && check_if_endl(t, x, &y))
+			continue ;
 		else
 			return (-1);
 	}
@@ -113,18 +96,30 @@ int	check_input_and_recognise_shapes(char **t, char *shapes)
 	return (0);
 }
 
+/*
+** 130 = 26 * 5
+*/
+
 int	check_input_and_get_str_of_shapes(int const fd, char *shapes)
 {
 	char	**t;
 	int		i;
 
-	if (!(t = (char **)malloc(MAX_INPUT_LINES * sizeof(char *))))
-		return (CHECK_ERROR);
-	t[(i = 0)] = ft_strnew(6);
+	if (!(t = (char **)malloc(130 * sizeof(char *))))
+	{
+		free(t);
+		return (0);
+	}
+	t[0] = ft_strnew(6);
+	i = 0;
 	while (get_next_line(fd, t + i))
 		t[++i] = ft_strnew(6);
-	t[i] = NULL;
+	t[i] = 0;
 	if (check_input_and_recognise_shapes(t, shapes) == -1)
-		return (CHECK_ERROR);
-	return (CHECK_SUCCESS);
+	{
+		wipe_mstr(t);
+		return (0);
+	}
+	wipe_mstr(t);
+	return (1);
 }

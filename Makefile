@@ -6,17 +6,17 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/01 04:42:47 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/01 10:34:39 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-.PHONY: all re clean fclean test
+.PHONY: all re clean fclean test memcheck
 
 MAIN = src/main.c
 
-TEST = tests/test
+TEST = test
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 NAME = fillit
 
@@ -39,7 +39,7 @@ SRCS = \
 	src/get_mlst_h.c \
 	src/get_mlst_w.c \
 	src/opts_lst_to_square_str.c \
-	src/compose_mstr_of_opts_from_shapes_str.c \
+	src/get_opts_mstr.c \
 	src/get_n_of_opts_in_mlst.c \
 	src/choose_option.c \
 	src/cover_option_of_node.c \
@@ -57,6 +57,7 @@ SRCS = \
 	src/create_vert_connections_in_mlst.c \
 	src/connect_nodes_vert.c \
 	src/translate_blocks_and_spacers.c \
+	src/wipe_mlst.c \
 	src/cover_item.c
 
 OBJS = \
@@ -78,7 +79,7 @@ OBJS = \
 	get_mlst_h.o \
 	get_mlst_w.o \
 	opts_lst_to_square_str.o \
-	compose_mstr_of_opts_from_shapes_str.o \
+	get_opts_mstr.o \
 	get_n_of_opts_in_mlst.o \
 	choose_option.o \
 	cover_option_of_node.o \
@@ -96,6 +97,7 @@ OBJS = \
 	create_vert_connections_in_mlst.o \
 	connect_nodes_vert.o \
 	translate_blocks_and_spacers.o \
+	wipe_mlst.o \
 	cover_item.o
 
 
@@ -122,3 +124,7 @@ re: fclean all
 test: re
 	clear
 	./$(NAME) $(TEST)
+
+memcheck: re
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME) $(TEST)
+	vim valgrind-out.txt
