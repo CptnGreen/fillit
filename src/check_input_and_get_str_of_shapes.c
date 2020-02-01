@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 05:49:00 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 10:26:04 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 14:38:17 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,9 @@ int	check_input_and_get_str_of_shapes(int const fd, char *shapes)
 		free(t);
 		return (0);
 	}
-	t[0] = ft_strnew(6);
 	i = 0;
 	while (get_next_line(fd, t + i))
-		t[++i] = ft_strnew(6);
+		i += 1;
 	t[i] = 0;
 	if (check_input_and_recognise_shapes(t, shapes) == -1)
 	{
