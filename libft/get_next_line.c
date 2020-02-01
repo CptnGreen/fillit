@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:50:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 10:16:56 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 11:33:15 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ int		get_next_line(int const fd, char **line)
 		buff = ft_strnew(BUFF_SIZE);
 	}
 	if ((got_new_line = cut_off_line(&tail[fd], &buff, line)))
+	{
+		ft_strdel(&buff);
 		return (1);
+	}
 	else if (ft_strlen(tail[fd]) > 0)
 	{
 		*line = ft_strdup(tail[fd]);

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 21:38:18 by slisandr          #+#    #+#             */
-/*   Updated: 2019/05/07 12:29:26 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 10:59:31 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,10 @@ int				ft_isdigit(int c);
 
 int				ft_toupper(int c);
 int				ft_tolower(int c);
-int				ft_isupper(char c);
-int				ft_islower(char c);
 int				ft_atoi(char const *str);
 char			*ft_itoa(int n);
 
-size_t		ft_strlen(char const *str);
+size_t			ft_strlen(char const *str);
 char			*ft_strdup(const char *s1);
 
 char			*ft_strcat(char *restrict s1, char const *restrict s2);
@@ -87,7 +85,7 @@ char			*ft_strnstr(char const *haystack, \
 
 char			*ft_strcpy(char *dst, char const *src);
 char			*ft_strncpy(char *dst, char const *src, size_t len);
-size_t		ft_strlcpy(char *dst, char const *src, size_t size);
+size_t			ft_strlcpy(char *dst, char const *src, size_t size);
 
 void			ft_memdel(void **ap);
 void			ft_strdel(char **as);
@@ -108,14 +106,17 @@ char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 
 /*
- ** BONUS PART
- */
+** BONUS PART
+*/
 
-t_list		*ft_lstnew(void const *content, size_t content_size);
+t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+int				ft_isupper(char c);
+int				ft_islower(char c);
 
 #endif

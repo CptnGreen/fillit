@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 10:54:49 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 11:21:43 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	fillit(char *shapes)
 			print_mstr(opts_lst_to_square_str(m_lst, sq_side));
 			break ;
 		}
+		wipe_mlst(m_lst);
 		sq_side += 1;
 	}
 	ft_strdel(&shapes);

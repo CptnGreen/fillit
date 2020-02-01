@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 07:54:16 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 07:59:55 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 11:27:41 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,6 @@ void	wipe_mlst(t_node **m_lst)
 		wipe_node(m_lst[i]);
 		i += 1;
 	}
+	free(m_lst);
+	m_lst = NULL;
 }
