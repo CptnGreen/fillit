@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 03:30:58 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 04:27:00 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		main(int argc, char **argv)
 	t_node		**m_lst;
 	char		*shapes;
 	int			sq_side;
+	int		n_of[4];
 
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
 	{
@@ -45,7 +46,7 @@ int		main(int argc, char **argv)
 	{
 		m_str = compose_mstr_of_opts_from_shapes_str(sq_side, shapes);
 		m_lst = get_mlst_from_mstr(m_str);
-		if (gbo(m_lst))
+		if (gbo(m_lst, n_of))
 		{
 			m_str = opts_lst_to_square_str(m_lst, sq_side);
 			print_mstr(m_str);

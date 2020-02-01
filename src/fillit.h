@@ -3,37 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 03:18:22 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 22:53:40 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/01 04:05:50 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/01 04:42:47 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-
-# include <time.h> // remove later!
-# include <stdio.h> // remove later!
-# include "../libft/libft.h"
-
-# define POSSIBLE_SHAPES (									\
-		tetr_subtype >= '1' &&								\
-		(													\
-			(tetr_type == 'L' && tetr_subtype <= '8') ||	\
-			(tetr_type == 'Z' && tetr_subtype <= '4') ||	\
-			(tetr_type == 'T' && tetr_subtype <= '4') ||	\
-			(tetr_type == 'I' && tetr_subtype <= '2') ||	\
-			(tetr_type == 'O' && tetr_subtype <= '1' )		\
-			))
 # define CORRECT 0
 # define WRONG 1
 # define SUCCESS 1
 # define FAILURE 0
 # define OPTS 0
-# define CHOS 1
-# define TETR_ALL 2
-# define TETR_PRES 3
+# define CH 1
+# define TA 2
+# define TU 3
+# include "../libft/libft.h"
 
 typedef struct			s_node{
 	struct s_node		*u;
@@ -81,7 +68,7 @@ int						get_num_of_tetr_mlst(t_node **m_lst);
 int						get_num_of_tetr_mlst_conseq(t_node **m_lst);
 void					choose_option(t_node **m_lst, int n_opt);
 void					cover_item_except_one_opt(t_node **m_lst, \
-												  int n_item, int n_opt);
+	int n_item, int n_opt);
 void					cover_item(t_node **m_lst, t_node *node);
 void					cover_option_of_node(t_node **m_lst, t_node *node);
 void					delete_node(t_node *node);
@@ -91,14 +78,15 @@ void					insert_node(t_node *node);
 void					unchoose_option(t_node **m_lst, int n_opt);
 void					uncover_item(t_node **m_lst, t_node *node);
 void					uncover_option_of_node(t_node **m_lst, t_node *node);
-int						gbo(t_node **m_lst);
-t_node					**get_next_submatrix_ptr(t_node **m_lst, int i);
-int						skip_to_next_unempty_opt(t_node **m_lst, int *index);
+int						gbo(t_node **m_lst, int *n_of);
+t_node					**get_ptr(t_node **m_lst, int i);
+int						skip(t_node **m_lst, int *index);
 void					print_mstr(char **matrix);
 size_t					get_num_of_blocks_in_mstr(char **m);
 void					create_vert_connections_in_mlst(t_node **m_lst);
 void					connect_nodes_vert(t_node *down, t_node *up);
 void					translate_blocks_and_spacers(\
 	t_node **m_lst, char **m_str, size_t w, size_t n);
+char					*get_tetr_shape_type(int *i, int *l);
 
 #endif

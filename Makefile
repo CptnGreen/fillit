@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/01/28 22:23:02 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/01 04:42:47 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -50,8 +50,8 @@ SRCS = \
 	src/uncover_item.c \
 	src/uncover_option_of_node.c \
 	src/gbo.c \
-	src/get_next_submatrix_ptr.c \
-	src/skip_to_next_unempty_opt.c \
+	src/get_ptr.c \
+	src/skip.c \
 	src/print_mstr.c \
 	src/get_num_of_blocks_in_mstr.c \
 	src/create_vert_connections_in_mlst.c \
@@ -89,8 +89,8 @@ OBJS = \
 	uncover_item.o \
 	uncover_option_of_node.o \
 	gbo.o \
-	get_next_submatrix_ptr.o \
-	skip_to_next_unempty_opt.o \
+	get_ptr.o \
+	skip.o \
 	print_mstr.o \
 	get_num_of_blocks_in_mstr.o \
 	create_vert_connections_in_mlst.o \
@@ -106,13 +106,16 @@ $(NAME): $(OBJS)
 	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN) -I . -L "libft/" -lft
 
 $(OBJS): $(SRCS)
+	@cd libft && make && cd ..
 	@gcc $(FLAGS) -c $(SRCS)
 
 clean:
 	@rm -rf $(OBJS)
+	@cd libft && make clean && cd ..
 
 fclean: clean
 	@rm -rf $(NAME)
+	@cd libft && make fclean && cd ..
 
 re: fclean all
 
