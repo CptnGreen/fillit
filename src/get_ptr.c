@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   skip_to_next_unempty_opt.c                         :+:      :+:    :+:   */
+/*   get_ptr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 19:58:55 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 19:59:02 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 22:44:29 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/01 04:44:43 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		skip_to_next_unempty_opt(t_node **m_lst, int *index)
-{
-	t_node	*cur;
-	char	letter;
+/*
+** Returns pointer to the beginning of the submatrix of opts with next letter
+*/
 
-	letter = (m_lst[*index]->c == '*') ? \
-		ft_toupper((m_lst[*index]->r->c)) : ft_toupper((m_lst[*index]->c));
-	cur = (m_lst[0]->role == 'z') ? (m_lst[0]->d) : (m_lst[0]);
-	while (cur->role != 'z')
+t_node		**get_ptr(t_node **m_lst, int i)
+{
+	char	old_letter;
+	t_node	*cur;
+	int		n;
+
+	cur = m_lst[i];
+	old_letter = ft_toupper(cur->r->c);
+	while (cur->c != '$' && cur->role != 'z')
 	{
-		if (cur->c == '$' || ft_toupper(cur->c) > letter)
-			return (FAILURE);
-		if (ft_isupper(cur->c) && cur->x > m_lst[*index]->x)
+		if (cur->c != '*')
 		{
-			*index = cur->n - m_lst[0]->n;
-			return (SUCCESS);
+			if (ft_toupper(cur->c) > old_letter + 1)
+				return (NULL);
+			if (ft_isupper(cur->c) && cur->c == old_letter + 1)
+			{
+				n = cur->n - m_lst[0]->n;
+				return (m_lst + n);
+			}
 		}
 		cur = cur->d;
 	}
-	return (FAILURE);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:23:05 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 20:26:58 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 04:02:46 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,12 @@ char	**get_submatrix_for_tetr(\
 	unsigned int			num_of_items;
 	char					*sgn;
 
-	if (POSSIBLE_SHAPES)
+	if (tetr_subtype >= '1' && (\
+			(tetr_type == 'L' && tetr_subtype <= '8') || \
+			(tetr_type == 'Z' && tetr_subtype <= '4') || \
+			(tetr_type == 'T' && tetr_subtype <= '4') || \
+			(tetr_type == 'I' && tetr_subtype <= '2') || \
+			(tetr_type == 'O' && tetr_subtype <= '1')))
 	{
 		num_of_items = get_number_of_items(sq_side);
 		num_of_options = get_number_of_options_for_tetrimino(\
