@@ -6,7 +6,7 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:39:37 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 05:10:56 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 05:29:23 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ int	count_block_connections(char **t, int x, int y, int line)
 	return (n_block_connections);
 }
 
+int	check_if_endl(char **t, int *x, int *y, int *line)
+{
+	if (t[*x][*y] == '\0')
+	{
+		*y = 0;
+		*line += 1;
+		*x += 1;
+		return (1);
+	}
+	return (0);
+}
+
 int	check_tetr(char **t, int *x, int *x1, int *y1)
 {
 	int		line;
@@ -55,13 +67,8 @@ int	check_tetr(char **t, int *x, int *x1, int *y1)
 	{
 		if (y == 4)
 		{
-			if (t[*x][y] == '\0')
-			{
-				y = 0;
-				line += 1;
-				*x += 1;
+			if (check_if_endl(t, x, &y, &line))
 				continue ;
-			}
 			return (-1);
 		}
 		else if (t[*x][y] == '.')
@@ -70,18 +77,14 @@ int	check_tetr(char **t, int *x, int *x1, int *y1)
 		{
 			n_tetr_connections += count_block_connections(t, *x, y, line);
 			x1[n_block] = *x;
-			y1[n_block] = y;
-			n_block += 1;
-			if (n_block > 4)
+			y1[n_block] = y++;
+			if (++n_block > 4)
 				return (-1);
-			y += 1;
 		}
 		else
 			return (-1);
 	}
-	if (n_block != 4 || n_tetr_connections < 6)
-		return (-1);
-	return (0);
+	return (((n_block != 4 || n_tetr_connections < 6) ? (-1) : (0)));
 }
 
 int	check_input_and_recognise_shapes(char **t, char *shapes)
