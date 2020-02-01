@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 10:46:51 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/01 10:54:49 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,30 @@ int		get_min_sq_side(char *shapes)
 	return (sq_side);
 }
 
+void	fillit(char *shapes)
+{
+	int			sq_side;
+	t_node		**m_lst;
+	int			n_of[4];
+
+	sq_side = get_min_sq_side(shapes);
+	while (sq_side <= 21)
+	{
+		m_lst = get_mlst_from_mstr(get_opts_mstr(sq_side, shapes));
+		if (gbo(m_lst, n_of))
+		{
+			print_mstr(opts_lst_to_square_str(m_lst, sq_side));
+			break ;
+		}
+		sq_side += 1;
+	}
+	ft_strdel(&shapes);
+}
+
 int		main(int argc, char **argv)
 {
 	int			fd;
-	t_node		**m_lst;
 	char		*shapes;
-	int			sq_side;
-	int			n_of[4];
 
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
 	{
@@ -53,17 +70,6 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	close(fd);
-	sq_side = get_min_sq_side(shapes);
-	while (sq_side <= 21)
-	{
-		m_lst = get_mlst_from_mstr(get_opts_mstr(sq_side, shapes));
-		if (gbo(m_lst, n_of))
-		{
-			print_mstr(opts_lst_to_square_str(m_lst, sq_side));
-			break ;
-		}
-		sq_side += 1;
-	}
-	ft_strdel(&shapes);
+	fillit(shapes);
 	return (0);
 }
