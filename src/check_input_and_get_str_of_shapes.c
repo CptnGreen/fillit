@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 05:49:00 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/02 22:14:59 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/02 23:41:45 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ int	check_input_and_recognise_shapes(char **t, char *shapes)
 	x = 0;
 	while (1)
 	{
+		n_tetr += 1;
+		if (n_tetr > 26)
+			return (-1);
 		if (check_tetr(t, &x, x1, y1) == -1)
 			return (-1);
 		ft_strcat(shapes, get_tetr_shape_type(x1, y1));
@@ -89,9 +92,6 @@ int	check_input_and_recognise_shapes(char **t, char *shapes)
 		if (t[x][0] != '\0')
 			return (-1);
 		x += 1;
-		n_tetr += 1;
-		if (n_tetr > 26)
-			return (-1);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:02:11 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 20:02:59 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/02 23:19:37 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ char	*get_tetr_shape_type_l(int *i, int *l)
 
 char	*get_tetr_shape_type_tz(int *i, int *l)
 {
-	if (i[0] == i[1] && i[2] == i[3] && l[2] == l[1])
+	if (i[0] == i[1] && i[2] == i[3] && l[1] == l[2])
 		return ("Z1");
 	else if (i[0] == i[1] && i[2] == i[3] && l[0] == l[3])
 		return ("Z2");
-	else if (i[2] == i[1] && l[1] == l[0] && l[2] == l[3])
+	else if (i[1] == i[2] && l[0] == l[1] && l[2] == l[3])
 		return ("Z3");
-	else if (i[2] == i[1] && l[2] == l[0] && l[3] == l[1])
+	else if (i[1] == i[2] && l[0] == l[2] && l[1] == l[3])
 		return ("Z4");
 	else if (i[0] == i[1] && i[1] == i[2] && i[2] != i[3] && l[3] == l[1])
 		return ("T1");

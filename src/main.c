@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/02 10:05:13 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/02 23:48:57 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int		get_min_sq_side(char *shapes)
 
 	len = ft_strlen(shapes);
 	n_tetr = (len / 2);
-	if (len == 1 && ft_strchr(shapes, 'O'))
-		sq_side = 2;
-	else if (ft_strchr(shapes, 'I'))
+	if (n_tetr == 1 && ft_strchr(shapes, 'O'))
+		return (2);
+	if (ft_strchr(shapes, 'I'))
 		sq_side = 4;
 	else
 		sq_side = 3;

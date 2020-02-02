@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:42:08 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 20:42:19 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/02 23:30:17 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ char	*get_tetr_sign_zo(char tetr_type, char tetr_subtype)
 		else if (tetr_subtype == '3')
 			return ("00101121");
 		else if (tetr_subtype == '4')
-			return ("00011112");
-		else if (tetr_subtype == '1')
 			return ("01101120");
 	}
 	else if (tetr_type == 'O')
