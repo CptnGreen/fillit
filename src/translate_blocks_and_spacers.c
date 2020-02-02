@@ -6,20 +6,18 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 22:21:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 22:53:07 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/02 22:14:59 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		translate_first_spacer(t_node **m_lst, int *i, t_node **spacer)
+void		translate_last_node(t_node **m_lst, int i)
 {
-	m_lst[*i] = get_new_node(*i, 's', 0, -1);
-	m_lst[*i]->c = 'S';
-	*spacer = m_lst[*i];
-	(*spacer)->u = m_lst[0];
-	m_lst[0]->d = *spacer;
-	(*i) += 1;
+	m_lst[i] = NULL;
+	m_lst[i - 1]->d = m_lst[0];
+	m_lst[0]->u = m_lst[i - 1];
+	m_lst[i - 1]->c = '$';
 }
 
 void		translate_endl(t_node **m_lst, int *x, int *i, t_node **spacer)
@@ -48,12 +46,14 @@ void		translate_letter(t_node **m_lst, char letter, int *i, t_node **sp)
 	(*i) += 1;
 }
 
-void		translate_last_node(t_node **m_lst, int i)
+void		translate_first_spacer(t_node **m_lst, int *i, t_node **spacer)
 {
-	m_lst[i] = NULL;
-	m_lst[i - 1]->d = m_lst[0];
-	m_lst[0]->u = m_lst[i - 1];
-	m_lst[i - 1]->c = '$';
+	m_lst[*i] = get_new_node(*i, 's', 0, -1);
+	m_lst[*i]->c = 'S';
+	*spacer = m_lst[*i];
+	(*spacer)->u = m_lst[0];
+	m_lst[0]->d = *spacer;
+	(*i) += 1;
 }
 
 void		translate_blocks_and_spacers(\
