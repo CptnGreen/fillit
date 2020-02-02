@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:45:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 11:21:43 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/02 10:05:13 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,12 @@ int		main(int argc, char **argv)
 	int			fd;
 	char		*shapes;
 
-	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) == -1)
+	if (argc != 2)
+	{
+		ft_putendl("usage: fillit input_file");
+		return (0);
+	}
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
 	{
 		ft_putendl("error");
 		return (0);

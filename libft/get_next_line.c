@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:50:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 11:33:15 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/02 09:20:59 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,22 @@ int		cut_off_line(char **tail, char **buff, char **line)
 	return (0);
 }
 
+int		handle_last_read_portion(char **tail, char **line, char **buff)
+{
+	if (cut_off_line(tail, buff, line))
+	{
+		ft_strdel(buff);
+		return (1);
+	}
+	else if (ft_strlen(*tail) > 0)
+	{
+		*line = ft_strdup(*tail);
+		ft_strdel(tail);
+		return (1);
+	}
+	return (0);
+}
+
 int		get_next_line(int const fd, char **line)
 {
 	static char		*tail[12000];
@@ -88,17 +104,9 @@ int		get_next_line(int const fd, char **line)
 			return (1);
 		buff = ft_strnew(BUFF_SIZE);
 	}
-	if ((got_new_line = cut_off_line(&tail[fd], &buff, line)))
-	{
-		ft_strdel(&buff);
+	if ((got_new_line = handle_last_read_portion(&tail[fd], line, &buff)))
 		return (1);
-	}
-	else if (ft_strlen(tail[fd]) > 0)
-	{
-		*line = ft_strdup(tail[fd]);
-		ft_strdel(&tail[fd]);
-		return (1);
-	}
 	ft_strdel(&buff);
+	ft_strdel(&tail[fd]);
 	return (0);
 }
