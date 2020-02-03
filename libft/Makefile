@@ -6,13 +6,17 @@
 #    By: slisandr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 21:31:09 by slisandr          #+#    #+#              #
-#    Updated: 2019/05/06 01:10:35 by ak               ###   ########.fr        #
+#    Updated: 2020/02/03 05:14:14 by slisandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.PHONY: all clean fclean re norm
 
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
+
+PREFIX = "src/"
 SRC = ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c \
       ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 	  ft_atoi.c ft_itoa.c \
@@ -37,9 +41,9 @@ SRC = ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c \
 OBJ = $(SRC:.c=.o)
 
 TEST_FILE = ./test
+
 EXEC = program
 
-.PHONY: all clean fclean re norm
 
 all: $(NAME)
 
@@ -47,7 +51,7 @@ $(NAME): $(OBJ)
 	@ ar rc $(NAME) $(OBJ)
 	@ ranlib $(NAME)
 $(OBJ): $(SRC)
-	@ gcc $(CFLAGS) -I. -c $(SRC)
+	@ gcc $(CFLAGS) -I "includes/" -c $(PREFIX)$(SRC)
 
 
 clean:
@@ -59,6 +63,6 @@ re: fclean all
 
 
 exec: $(NAME)
-	@ gcc -I. main.c -L . -lft -lbsd -o $(EXEC) # -lbsd
+	@ gcc -I "includes/" main.c -L . -lft -o $(EXEC)
 norm:
 	@ norminette $(SRC) libft.h

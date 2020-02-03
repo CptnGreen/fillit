@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/03 00:05:21 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/03 05:11:20 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -105,7 +105,7 @@ all: $(NAME)
 
 
 $(NAME): $(OBJS)
-	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN) -I . -L "libft/" -lft
+	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN) -I "includes/" -L "libft/" -lft
 
 $(OBJS): $(SRCS)
 	@cd libft && make && cd ..

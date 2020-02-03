@@ -6,22 +6,19 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 06:32:49 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/02 10:05:21 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/03 04:59:07 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# define CORRECT 0
-# define WRONG 1
-# define SUCCESS 1
-# define FAILURE 0
+
 # define OPTS 0
 # define CH 1
 # define TA 2
 # define TU 3
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include "t_node.h"
 
 char					*get_tetr_sign(char tetr_type, char tetr_subtype);
