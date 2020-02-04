@@ -6,7 +6,7 @@
 #    By: slisandr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 21:31:09 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/04 20:59:42 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/04 21:39:34 by slisandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS = -Wall -Werror -Wextra
 NAME = libft.a
 
 SRC_DIR = src
+OBJ_DIR = obj
 
 SRC_RAW = \
 			ft_putchar.c \
@@ -95,8 +96,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ ar rc $(NAME) $(OBJ)
 	@ ranlib $(NAME)
-$(OBJ): $(SRC)
-	@ gcc $(CFLAGS) -I "includes/" -c $(SRC)
+%.o: $(SRC_DIR)/%.c
+	gcc $(CFLAGS) -I "includes/" -c $<
 
 
 clean:
