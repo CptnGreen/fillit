@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 21:38:18 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/03 05:05:47 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/04 20:45:47 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct	s_list
 	struct s_list		*next;
 }				t_list;
 
+/*
+** MANDATORY PART
+*/
+
 void			ft_putchar(char c);
 void			ft_putstr(char const *str);
 void			ft_putendl(char const *str);
@@ -51,16 +55,15 @@ int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
-
 int				ft_isdigit(int c);
 
 int				ft_toupper(int c);
 int				ft_tolower(int c);
+
 int				ft_atoi(char const *str);
 char			*ft_itoa(int n);
 
 size_t			ft_strlen(char const *str);
-char			*ft_strdup(const char *s1);
 
 char			*ft_strcat(char *restrict s1, char const *restrict s2);
 char			*ft_strncat(char *restrict s1, \
@@ -93,6 +96,7 @@ void			ft_strclr(char *s);
 
 void			*ft_memalloc(size_t size);
 char			*ft_strnew(size_t size);
+char			*ft_strdup(const char *s1);
 
 void			ft_striter(char *s, void (*f)(char *));
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
