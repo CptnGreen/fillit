@@ -6,13 +6,19 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/03 05:11:20 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/05 02:22:49 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-.PHONY: all re clean fclean test memcheck
+# COLORS
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
 
-MAIN = src/main.c
+.PHONY: all re clean fclean test memcheck libft
+
+MAIN_RAW = main.c
+MAIN = $(addprefix $(SRC_DIR)/,$(MAIN_RAW))
 
 TEST = test
 
@@ -20,106 +26,79 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = fillit
 
-SRCS = \
-	src/get_number_of_options_for_tetrimino.c \
-	src/get_submatrix_for_tetr.c \
-	src/get_number_of_items.c \
-	src/get_tetr_sign.c \
-	src/get_new_node.c \
-	src/get_matrix_of_dots.c \
-	src/get_mlst_from_mstr.c \
-	src/get_tetr_shape_type.c \
-	src/join_matrices_str.c \
-	src/check_input_and_get_str_of_shapes.c \
-	src/get_mstr_w.c \
-	src/get_mstr_h.c \
-	src/get_tetr_height.c \
-	src/get_tetr_width.c \
-	src/wipe_mstr.c \
-	src/get_mlst_h.c \
-	src/get_mlst_w.c \
-	src/opts_lst_to_square_str.c \
-	src/get_opts_mstr.c \
-	src/get_n_of_opts_in_mlst.c \
-	src/choose_option.c \
-	src/cover_option_of_node.c \
-	src/delete_node.c \
-	src/update_mlst_status.c \
-	src/insert_node.c \
-	src/unchoose_option.c \
-	src/uncover_item.c \
-	src/uncover_option_of_node.c \
-	src/gbo.c \
-	src/get_ptr.c \
-	src/skip.c \
-	src/print_mstr.c \
-	src/get_num_of_blocks_in_mstr.c \
-	src/create_vert_connections_in_mlst.c \
-	src/connect_nodes_vert.c \
-	src/translate_blocks_and_spacers.c \
-	src/wipe_mlst.c \
-	src/cover_item.c
+SRC_DIR = src
+OBJ_DIR = obj
 
-OBJS = \
-	get_number_of_options_for_tetrimino.o \
-	get_submatrix_for_tetr.o \
-	get_number_of_items.o \
-	get_tetr_sign.o \
-	get_new_node.o \
-	get_matrix_of_dots.o \
-	get_mlst_from_mstr.o \
-	get_tetr_shape_type.o \
-	join_matrices_str.o \
-	check_input_and_get_str_of_shapes.o \
-	get_mstr_w.o \
-	get_mstr_h.o \
-	get_tetr_height.o \
-	get_tetr_width.o \
-	wipe_mstr.o \
-	get_mlst_h.o \
-	get_mlst_w.o \
-	opts_lst_to_square_str.o \
-	get_opts_mstr.o \
-	get_n_of_opts_in_mlst.o \
-	choose_option.o \
-	cover_option_of_node.o \
-	delete_node.o \
-	update_mlst_status.o \
-	insert_node.o \
-	unchoose_option.o \
-	uncover_item.o \
-	uncover_option_of_node.o \
-	gbo.o \
-	get_ptr.o \
-	skip.o \
-	print_mstr.o \
-	get_num_of_blocks_in_mstr.o \
-	create_vert_connections_in_mlst.o \
-	connect_nodes_vert.o \
-	translate_blocks_and_spacers.o \
-	wipe_mlst.o \
-	cover_item.o
+SRC_RAW = \
+	get_number_of_options_for_tetrimino.c \
+	get_submatrix_for_tetr.c \
+	get_number_of_items.c \
+	get_tetr_sign.c \
+	get_new_node.c \
+	get_matrix_of_dots.c \
+	get_mlst_from_mstr.c \
+	get_tetr_shape_type.c \
+	join_matrices_str.c \
+	check_input_and_get_str_of_shapes.c \
+	get_mstr_w.c \
+	get_mstr_h.c \
+	get_tetr_height.c \
+	get_tetr_width.c \
+	wipe_mstr.c \
+	get_mlst_h.c \
+	get_mlst_w.c \
+	opts_lst_to_square_str.c \
+	get_opts_mstr.c \
+	get_n_of_opts_in_mlst.c \
+	choose_option.c \
+	cover_option_of_node.c \
+	delete_node.c \
+	update_mlst_status.c \
+	insert_node.c \
+	unchoose_option.c \
+	uncover_item.c \
+	uncover_option_of_node.c \
+	gbo.c \
+	get_ptr.c \
+	skip.c \
+	print_mstr.c \
+	get_num_of_blocks_in_mstr.c \
+	create_vert_connections_in_mlst.c \
+	connect_nodes_vert.c \
+	translate_blocks_and_spacers.c \
+	wipe_mlst.c \
+	cover_item.c
+
+SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))
+OBJ = $(addprefix $(OBJ_DIR)/,$(SRC_RAW:.c=.o))
 
 
 all: $(NAME)
 
+$(NAME): libft $(OBJ_DIR) $(OBJ)
+	@ echo "$(NAME): $(GREEN)object files were created$(RESET)"
+	@ gcc $(CFLAGS) -o $(NAME) $(OBJ) $(MAIN) -I "includes/" -I "libft/includes/" -L "libft/" -lft
+	@ echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+libft:
+	@ make -C libft/
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@ gcc $(FLAGS) -I "includes/" -I "libft/includes/" -c $< -o $@
+$(OBJ_DIR):
+	@ mkdir -p $(OBJ_DIR)
+	@ echo "$(NAME): $(GREEN)$(OBJ_DIR) folder was created$(RESET)"
 
-$(NAME): $(OBJS)
-	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN) -I "includes/" -L "libft/" -lft
-
-$(OBJS): $(SRCS)
-	@cd libft && make && cd ..
-	@gcc $(FLAGS) -c $(SRCS)
 
 clean:
-	@rm -rf $(OBJS)
-	@cd libft && make clean && cd ..
-
+	@ rm -rf $(OBJ_DIR)
+	@ echo "$(NAME): $(RED)object files were deleted$(RESET)"
+	@ echo "$(NAME): $(RED)$(OBJ_DIR) folder was deleted$(RESET)"
+	@ make -C libft/ clean
 fclean: clean
-	@rm -rf $(NAME)
-	@cd libft && make fclean && cd ..
-
+	@ rm -rf $(NAME)
+	@ echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
+	@ make -C libft/ fclean
 re: fclean all
+
 
 test: re
 	clear

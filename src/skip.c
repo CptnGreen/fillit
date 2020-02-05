@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 19:58:55 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 04:47:20 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/04 23:13:22 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int		skip(t_node **m_lst, int *index)
 	while (cur->role != 'z')
 	{
 		if (cur->c == '$' || ft_toupper(cur->c) > letter)
-			return (FAILURE);
+			return (0);
 		if (ft_isupper(cur->c) && cur->x > m_lst[*index]->x)
 		{
 			*index = cur->n - m_lst[0]->n;
-			return (SUCCESS);
+			return (1);
 		}
 		cur = cur->d;
 	}
-	return (FAILURE);
+	return (0);
 }

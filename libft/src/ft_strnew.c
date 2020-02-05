@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 20:58:07 by slisandr          #+#    #+#             */
-/*   Updated: 2019/05/05 21:57:05 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 01:27:44 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ char	*ft_strnew(size_t size)
 			str[i++] = '\0';
 		return (str);
 	}
-	else
-		return (NULL);
+	return (NULL);
 }

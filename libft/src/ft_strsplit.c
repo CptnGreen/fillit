@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 19:54:02 by slisandr          #+#    #+#             */
-/*   Updated: 2019/05/07 12:48:31 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 01:27:13 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,5 @@ char				**ft_strsplit(char const *s, char c)
 		distribute_words_delim(ar, s, c);
 		return (ar);
 	}
-	else
-		return (NULL);
+	return (NULL);
 }

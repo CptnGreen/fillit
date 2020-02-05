@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 21:00:26 by slisandr          #+#    #+#             */
-/*   Updated: 2019/05/05 21:58:44 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 01:28:13 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		}
 		return (str);
 	}
-	else
-		return (NULL);
+	return (NULL);
 }

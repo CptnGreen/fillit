@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 21:02:49 by slisandr          #+#    #+#             */
-/*   Updated: 2019/05/05 21:57:55 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 01:27:58 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ char	*ft_strmap(char const *s, char (*f)(char))
 		}
 		return (str);
 	}
-	else
-		return (NULL);
+	return (NULL);
 }

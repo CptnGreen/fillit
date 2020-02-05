@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 18:59:48 by slisandr          #+#    #+#             */
-/*   Updated: 2019/05/05 20:07:56 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 01:28:44 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ char	*ft_strdup(char const *s1)
 			dup[i] = s1[i];
 		return (dup);
 	}
-	else
-		return (NULL);
+	return (NULL);
 }

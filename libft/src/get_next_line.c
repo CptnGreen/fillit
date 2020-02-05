@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:50:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/04 21:38:35 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 01:26:20 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ char	*increase_tail(char *tail, char *buff)
 		i = ft_strlen(tail);
 	if (buff)
 		j = ft_strlen(buff);
-	ptr = (char *)malloc(sizeof(*ptr) * (i + j + 1));
+	if (!(ptr = (char *)malloc(sizeof(*ptr) * (i + j + 1))))
+		return (NULL);
 	ft_memcpy(ptr, tail, i);
 	ft_memcpy(ptr + i, buff, j);
 	ptr[i + j] = '\0';

@@ -6,7 +6,7 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:34:14 by slisandr          #+#    #+#             */
-/*   Updated: 2020/01/28 02:38:11 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 00:29:36 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	**get_matrix_of_dots(unsigned int rows, unsigned int cols)
 	int		i;
 	int		j;
 
-	matrix = (char **)malloc((rows + 1) * sizeof(char *));
+	if (!(matrix = (char **)malloc((rows + 1) * sizeof(char *))))
+		return (NULL);
 	i = 0;
 	while (i < rows)
 	{

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:29:53 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 14:39:12 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 00:29:00 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ t_node		**get_mlst_from_mstr(char **m_str)
 	w = get_mstr_w(m_str);
 	h = get_mstr_h(m_str);
 	n = get_num_of_blocks_in_mstr(m_str);
-	m_lst = (t_node **)malloc((h + w + n + 3) * sizeof(t_node *));
+	if (!(m_lst = (t_node **)malloc((h + w + n + 3) * sizeof(t_node *))))
+		return (NULL);
 	translate_upper_row(m_lst, w);
 	translate_blocks_and_spacers(m_lst, m_str, w, n);
 	create_vert_connections_in_mlst(m_lst);

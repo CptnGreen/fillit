@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:08:59 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 14:38:54 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 00:22:24 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	**join_matrices_str(char **m1, char **m2)
 		return (NULL);
 	m1_h = get_mstr_h(m1);
 	m2_h = get_mstr_h(m2);
-	m = (char **)malloc((m1_h + m2_h + 1) * sizeof(char *));
+	if (!(m = (char **)malloc((m1_h + m2_h + 1) * sizeof(char *))))
+		return (NULL);
 	j = -1;
 	i = -1;
 	while (++i < m1_h)

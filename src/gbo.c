@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 22:57:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/01 08:00:24 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/04 23:12:05 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int		gbo(t_node **m_lst, int *n_of)
 		choose_option(m_lst, m_lst[i]->x);
 		update_mlst_status(m_lst, n_of);
 		if (n_of[CH] == n_of[TA])
-			return (SUCCESS);
+			return (1);
 		if (n_of[TU] + n_of[CH] < n_of[TA] || !(ptr = get_ptr(m_lst, i)))
 		{
 			unchoose_option(m_lst, m_lst[i]->x);
 			continue ;
 		}
-		if (gbo(ptr, n_of) == SUCCESS)
-			return (SUCCESS);
+		if (gbo(ptr, n_of) == 1)
+			return (1);
 		unchoose_option(m_lst, m_lst[i]->x);
 	}
-	return (FAILURE);
+	return (0);
 }
