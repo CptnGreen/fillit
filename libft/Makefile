@@ -6,14 +6,9 @@
 #    By: slisandr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 21:31:09 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/05 02:19:42 by slisandr         ###   ########.fr        #
+#    Updated: 2020/03/10 23:04:10 by slisandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# COLORS
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
 
 .PHONY: all clean fclean re norm
 
@@ -86,6 +81,22 @@ SRC_RAW = \
 			ft_lstadd.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
+			get_matrix_of_char.c \
+			get_mtab_of_dots.c \
+			get_mstr_h.c \
+			get_mstr_w.c \
+			join_matrices_str.c \
+			print_mstr.c \
+			print_mtab.c \
+			wipe_mstr.c \
+			wipe_mtab.c \
+			ft_mstr_to_str.c \
+			ft_strdup_int.c \
+			ft_tabnew.c \
+			ft_tabint.c \
+			ft_tabdup.c \
+			mtab_dup.c \
+			mstr_dup.c \
 			get_next_line.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))
@@ -98,24 +109,18 @@ EXEC = program
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-	@ echo "$(NAME): $(GREEN)object files were created$(RESET)"
 	@ ar rc $(NAME) $(OBJ)
 	@ ranlib $(NAME)
-	@ echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@ gcc $(CFLAGS) -I "includes/" -c $< -o $@
 $(OBJ_DIR):
 	@ mkdir -p $(OBJ_DIR)
-	@ echo "$(NAME): $(GREEN)$(OBJ_DIR) folder was created$(RESET)"
 
 
 clean:
 	@ rm -rf $(OBJ_DIR)
-	@ echo "$(NAME): $(RED)object files were deleted$(RESET)"
-	@ echo "$(NAME): $(RED)$(OBJ_DIR) folder was deleted$(RESET)"
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 re: fclean all
 
 
@@ -123,4 +128,4 @@ re: fclean all
 exec: $(NAME)
 	@ gcc -I "includes/" main.c -L . -lft -o $(EXEC)
 norm:
-	@ norminette $(SRC) libft.h
+	@ norminette $(SRC_DIR) includes

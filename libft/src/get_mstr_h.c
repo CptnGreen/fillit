@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   get_mstr_h.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 22:55:10 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/05 04:45:38 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+size_t	get_mstr_h(char **m)
 {
-	char	*str;
-	size_t	i;
+	int		i;
 
-	str = NULL;
-	if (size != 0)
+	i = 0;
+	if (m)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
-			return (NULL);
-		else
-		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
-		}
+		while (m[i])
+			i++;
 	}
-	return ((void *)str);
+	return (i);
 }

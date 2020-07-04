@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 18:59:48 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/05 01:28:44 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 04:03:50 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 char	*ft_strdup(char const *s1)
 {
 	char	*dup;
-	size_t	len;
+	int		len;
 	int		i;
 
 	i = -1;
 	len = ft_strlen(s1);
-	dup = (char *)malloc(sizeof(char) * (len + 1));
+	dup = NULL;
+	dup = (char *)ft_memalloc(sizeof(char) * (len + 1));
 	if (dup)
 	{
 		dup[len] = '\0';

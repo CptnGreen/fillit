@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   wipe_mtab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/08 22:13:23 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/10 23:14:10 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
-{
-	char	*str;
-	size_t	i;
+/*
+** This one is like wipe_mstr() but for int arrays
+*/
 
-	str = NULL;
-	if (size != 0)
+void	wipe_mtab(int **m, size_t rows, size_t cols)
+{
+	size_t		i;
+
+	i = 0;
+	if (m)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
-			return (NULL);
-		else
+		while (m[i] && i < rows)
 		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
+			ft_bzero(m[i], cols);
+			ft_memdel((void **)(m + i));
+			i++;
 		}
+		free(m);
+		m = NULL;
 	}
-	return ((void *)str);
 }

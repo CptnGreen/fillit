@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   mtab_dup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/09 00:43:19 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/07 14:46:09 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+int		**mtab_dup(int const **m, unsigned int rows, unsigned int cols)
 {
-	char	*str;
-	size_t	i;
+	int					**matrix;
+	unsigned int		i;
+	unsigned int		j;
 
-	str = NULL;
-	if (size != 0)
+	matrix = NULL;
+	if (rows != 0 && cols != 0)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
+		if (!(matrix = (int	**)ft_memalloc((rows + 1) * sizeof(int *))))
 			return (NULL);
-		else
+		i = 0;
+		while (i < rows)
 		{
-			i = 0;
-			while (i < size)
+			matrix[i] = ft_tabnew(cols);
+			j = 0;
+			while (j < cols)
 			{
-				str[i] = 0;
-				i += 1;
+				matrix[i][j] = m[i][j];
+				j++;
 			}
+			i++;
 		}
+		matrix[i] = NULL;
 	}
-	return ((void *)str);
+	return (matrix);
 }

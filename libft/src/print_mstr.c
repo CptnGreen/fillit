@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   print_mstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 20:03:33 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/07 18:26:52 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+void	print_mstr(char **matrix)
 {
-	char	*str;
-	size_t	i;
+	int	i;
 
-	str = NULL;
-	if (size != 0)
+	if (matrix)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
-			return (NULL);
-		else
+		i = 0;
+		while (matrix[i])
 		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
+			ft_putendl(matrix[i]);
+			i++;
 		}
 	}
-	return ((void *)str);
 }

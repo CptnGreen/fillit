@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   get_mtab_of_dots.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/08 22:32:44 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/08 22:34:54 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+int		**get_mtab_of_dots(unsigned int rows, unsigned int cols)
 {
-	char	*str;
-	size_t	i;
+	int					**matrix;
+	unsigned int		i;
+	unsigned int		j;
 
-	str = NULL;
-	if (size != 0)
+	if (!(matrix = (int	**)ft_memalloc((rows + 1) * sizeof(int *))))
+		return (NULL);
+	i = 0;
+	while (i < rows)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
-			return (NULL);
-		else
+		matrix[i] = ft_tabnew(cols);
+		j = 0;
+		while (j < cols)
 		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
+			matrix[i][j] = '.';
+			j++;
 		}
+		i++;
 	}
-	return ((void *)str);
+	matrix[i] = NULL;
+	return (matrix);
 }

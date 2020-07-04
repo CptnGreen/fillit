@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_tabnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/03/02 12:46:37 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/07 14:40:20 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+int		*ft_tabnew(size_t size)
 {
-	char	*str;
+	int		*tab;
 	size_t	i;
 
-	str = NULL;
+	tab = NULL;
 	if (size != 0)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
+		if (!(tab = (int *)ft_memalloc(sizeof(int) * size)))
 			return (NULL);
-		else
+		i = 0;
+		while (i < size)
 		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
+			tab[i] = 0;
+			i += 1;
 		}
 	}
-	return ((void *)str);
+	return (tab);
 }

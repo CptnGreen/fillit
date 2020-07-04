@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_tabint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/27 11:54:36 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/06 04:54:41 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
-{
-	char	*str;
-	size_t	i;
+/*
+** Similar to ft_strchr() but for ints
+*/
 
-	str = NULL;
-	if (size != 0)
+int		*ft_tabint(int const *ptr, size_t size, int c)
+{
+	int			*tab;
+	size_t		i;
+	int			fd_output;
+
+	fd_output = open("test1", O_WRONLY | O_APPEND);
+	tab = (int *)ptr;
+	i = 0;
+	while (i < size)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
-			return (NULL);
-		else
-		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
-		}
+		if (tab[i] == c)
+			return (tab + i);
+		ft_putnbr_fd(tab[i], fd_output);
+		ft_putchar_fd('\n', fd_output);
+		i += 1;
 	}
-	return ((void *)str);
+	ft_putchar_fd('\n', fd_output);
+	return (0);
 }

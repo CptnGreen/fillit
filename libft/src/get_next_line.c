@@ -6,11 +6,17 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:50:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/05 01:26:20 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 03:57:09 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Returns:
+** - (-1) if couldn't find '\n' in a string
+** - some integer - position of the first '\n' found in the string
+*/
 
 int		find_endline(char *tail)
 {
@@ -40,7 +46,7 @@ char	*increase_tail(char *tail, char *buff)
 		i = ft_strlen(tail);
 	if (buff)
 		j = ft_strlen(buff);
-	if (!(ptr = (char *)malloc(sizeof(*ptr) * (i + j + 1))))
+	if (!(ptr = (char *)ft_memalloc(sizeof(*ptr) * (i + j + 1))))
 		return (NULL);
 	ft_memcpy(ptr, tail, i);
 	ft_memcpy(ptr + i, buff, j);
@@ -75,7 +81,8 @@ int		handle_last_read_portion(char **tail, char **line, char **buff)
 		ft_strdel(buff);
 		return (1);
 	}
-	else if (ft_strlen(*tail) > 0)
+	ft_strdel(buff);
+	if (ft_strlen(*tail) > 0)
 	{
 		*line = ft_strdup(*tail);
 		ft_strdel(tail);
@@ -83,6 +90,13 @@ int		handle_last_read_portion(char **tail, char **line, char **buff)
 	}
 	return (0);
 }
+
+/*
+** get_next_line() returns:
+** - (-1) on error
+** - (1) if successfully read new line
+** - (0) if no more lines present
+*/
 
 int		get_next_line(int const fd, char **line)
 {
@@ -92,7 +106,7 @@ int		get_next_line(int const fd, char **line)
 	int				ret;
 
 	buff = ft_strnew(BUFF_SIZE);
-	if (line == 0 || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, buff, 0)) < 0)
+	if (BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, buff, 0)) < 0)
 	{
 		ft_strdel(&buff);
 		return (-1);
@@ -107,7 +121,6 @@ int		get_next_line(int const fd, char **line)
 	}
 	if ((got_new_line = handle_last_read_portion(&tail[fd], line, &buff)))
 		return (1);
-	ft_strdel(&buff);
 	ft_strdel(&tail[fd]);
 	return (0);
 }

@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strdup_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/08 22:25:14 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/07 14:50:25 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
-{
-	char	*str;
-	size_t	i;
+/*
+** Similar to ft_strdup() but returns tab of ints
+*/
 
-	str = NULL;
-	if (size != 0)
+int		*ft_strdup_int(char const *str)
+{
+	int		*dup;
+	int		len;
+	int		i;
+
+	dup = NULL;
+	if (str)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
+		len = ft_strlen(str);
+		if (!(dup = (int *)ft_memalloc(sizeof(int) * len)))
 			return (NULL);
-		else
+		i = 0;
+		while (i < len)
 		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
+			dup[i] = (int)(str[i]);
+			i += 1;
 		}
 	}
-	return ((void *)str);
+	return (dup);
 }

@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   wipe_mstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: slisandr <slisandr@google.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
+/*   Created: 2020/01/28 03:44:38 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/03 23:00:22 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+void	wipe_mstr(char **m)
 {
-	char	*str;
-	size_t	i;
+	int		i;
 
-	str = NULL;
-	if (size != 0)
+	i = 0;
+	if (m)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * size)))
-			return (NULL);
-		else
+		while (m[i])
 		{
-			i = 0;
-			while (i < size)
-			{
-				str[i] = 0;
-				i += 1;
-			}
+			ft_strdel(m + i);
+			i++;
 		}
+		free(m);
+		m = NULL;
 	}
-	return ((void *)str);
 }
