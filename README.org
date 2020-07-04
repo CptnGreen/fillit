@@ -1,0 +1,17 @@
+** Description
+
+Educational project at School 21.
+
+Main goal - explore and code backtracking algorithm.
+
+** Usage
+
+Clone repo, run =make=.
+
+Then run executable with some set of teriminoes as an argument:
+
+#+BEGIN_SRC bash
+
+./fillit test
+
+#+END_SRC
